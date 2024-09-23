@@ -7,8 +7,8 @@ This browser based web application to ...
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
 * Hi my name is Adnan! I am excited to build a web application.
- Hi my name is BARDIA
-* ... ...Hi my name is Adnan! I am excited to build a web application.
+  Hi my name is BARDIA
+* Hi my name is Arsh! I am excited to build a web application.
 * ...
 	
 ## 3. Technologies and Resources Used
