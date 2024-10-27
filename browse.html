@@ -17,6 +17,7 @@
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+
     <style>
         .card {
             height: 400px;
@@ -30,14 +31,28 @@
         .card-body {
             height: 200px;
         }
+
+        .navbar-icon {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+        }
+
+        .navbar-text {
+            display: flex;
+            align-items: center;
+        }
     </style>
+
 </head>
 
 <body class="bg-orange-100">
 
     <header>
         <nav class="flex justify-between items-center bg-orange-500 p-2 text-xl text-white font-bold">
-            <div class="hidden md:flex text-sm mt-1">
+            <div class="hidden md:flex text-sm mt-1 navbar-text">
+                <a href="index.html"><img src="./images/home-unselected-state-svgrepo-com.svg" alt="#"
+                        class="navbar-icon inline-block mr-2"></a>
                 <div class="mr-4 text-xl"><a href="#">About Us</a></div>
                 <div class="text-xl"><a href="#">Contact Us</a></div>
                 <div class="text-xl ml-4"><a href="#">Browse Food</a></div>
