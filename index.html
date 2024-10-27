@@ -11,39 +11,43 @@
 <body class="bg-orange-100">
 
     <header>
-        <nav class="bg-orange-500 p-4 text-xl text-white font-bold col-span-4 grid-row-1 justify-between flex">
-            <div class="flex text-sm mt-1">
-                <div class="mr-4"><a href="#">About Us</a></div>
-                <div class=""><a href="#">Contact Us</a></div>
+        <nav class="flex justify-between items-center bg-orange-500 p-4 text-xl text-white font-bold">
+            <div class="hidden md:flex text-sm mt-1">
+                <div class="mr-4 text-xl"><a href="#">About Us</a></div>
+                <div class="text-xl"><a href="#">Contact Us</a></div>
             </div>
 
-            <div class="text-6xl italic ml-20">
+            <div class="text-4xl md:text-6xl italic ml-4 md:ml-0">
                 <p>HomeBites</p>
             </div>
-            <div><input type="text" class="border-2 border-green-500 rounded-md text-slate-400 mr-2 text-sm w-64 py-3"
-                    placeholder="Search"><button
-                    class=" text-sm py-3 px-3 border-2 border-green-500 rounded-md text-green-700 bg-green-200">Search</button>
+
+            <div class="flex space-x-2">
+                <input type="text"
+                    class="border-2 border-green-500 rounded-xl text-slate-400 text-sm w-32 md:w-48 h-10 md:h-12 py-2"
+                    placeholder="   Search">
+                <button
+                    class="text-sm py-2 px-3 border-2 border-green-500 rounded-xl text-green-700 bg-green-300 w-20 md:w-auto h-10 md:h-12">Search</button>
             </div>
         </nav>
-
     </header>
 
-    <section class="p-16 leading-relaxed flex justify-between text-gray-900">
+    <section class="p-8 md:p-16 leading-relaxed flex flex-col md:flex-row justify-between text-gray-900">
 
-        <div class="w-1/2">
-            <h1 class="text-5xl leading-loose"> Welcome to HomeBites !</h1>
-            <h2 class="text-xl leading-loose">Our team Arsh, Bardia, and Adnan are <br> developing a web application to
-                help <br>new immigrants to have access to
-                home-made <br>
-                meals by connecting them to home chefs.</h2><br>
+        <div class="w-full md:w-1/2 mb-8 md:mb-0">
+            <h1 class="text-5xl leading-loose"> Welcome to HomeBites!</h1>
+            <h2 class="text-xl leading-loose">
+                Our team Arsh, Bardia, and Adnan are <br> developing a web application to
+                help <br>new immigrants have access to
+                home-made <br> meals by connecting them to home chefs.
+            </h2><br>
 
-            <a href="#" class="px-48"><button
-                    class="bg-teal-800 text-white justify-center p-1 px-6 font-bold rounded-xl">LOGIN</button></a>
+            <a href="#" class="flex justify-center"><button
+                    class="bg-teal-800 text-white p-2 px-6 font-bold rounded-xl">LOGIN</button></a>
         </div>
 
-        <div class="w-1/2">
-            <img src="./images/Meal-Prep-Chickpea-Salad-main-square.jpg" class="rounded-xl" width="400px"
-                height="250px">
+        <div class="w-full md:w-1/2 flex justify-center">
+            <img src="./images/Meal-Prep-Chickpea-Salad-main-square.jpg"
+                class="rounded-xl w-3/4 h-auto md:w-96 md:h-64 lg:w-[400px] lg:h-[250px]" alt="Chickpea Salad">
         </div>
     </section>
 
