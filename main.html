@@ -19,9 +19,10 @@
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="./scripts/firebaseAPI_DTC11.js"></script>
-    <script src="./scripts/authentication.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/main.js"></script>
+    <!-- <script src="./scripts/script.js"></script> -->
+    <!-- <script src="./scripts/authentication.js"></script> -->
 </head>
 <style>
     .navbar-icon {
@@ -42,6 +43,7 @@
         <div class="hidden md:flex text-sm mt-1 navbar-text">
             <a href="index.html"><img src="./images/home-unselected-state-svgrepo-com.svg" alt="#"
                     class="navbar-icon inline-block mr-2"></a>
+            <div class="text-xl mr-4"><a href="browse.html">Browse Food</a></div>
             <div class="mr-4 text-xl"><a href="#">About Us</a></div>
             <div class="text-xl"><a href="#">Contact Us</a></div>
         </div>
@@ -60,26 +62,13 @@
     </nav>
 </header>
 
-    <section class="p-8 md:p-16 leading-relaxed flex flex-col md:flex-row justify-between text-gray-900">
-
-        <div class="w-full md:w-1/2 mb-8 md:mb-0">
-            <h1 class="text-5xl leading-loose"> Welcome to HomeBites!</h1>
-            <h2 class="text-xl leading-loose">
-                Our team Arsh, Bardia, and Adnan are <br> developing a web application to
-                help <br>new immigrants have access to
-                home-made <br> meals by connecting them to home chefs.
-            </h2><br>
-
-            <a href="login.html" class="flex justify-center"><button
-                    class="bg-teal-800 text-white p-2 px-6 font-bold rounded-xl">LOGIN</button></a>
+    <div class="container-fluid bg-light text-dark p-5">
+        <div class="container bg-light p-5">
+            <h1 class="display-4">Good morning, <span id="name-goes-here"></span></h1>
+            <hr>
+            <p>Quote of the day: The best view comes after the hardest climb.</p>
         </div>
-
-        <div class="w-full md:w-1/2 flex justify-center">
-            <img src="./images/Meal-Prep-Chickpea-Salad-main-square.jpg"
-                class="rounded-xl w-3/4 h-auto md:w-96 md:h-64 lg:w-[400px] lg:h-[250px]" alt="Chickpea Salad">
-        </div>
-    </section>
-
+    </div>
 </body>
 
 </html>
