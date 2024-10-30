@@ -1,10 +1,11 @@
-<nav id="afterLoginNav"  class="flex justify-between items-center bg-orange-500 p-2 text-xl text-white font-bold">
+<nav id="afterLoginNav" class="flex justify-between items-center bg-orange-500 p-2 text-xl text-white font-bold">
     <div class="hidden md:flex text-sm mt-1 navbar-text">
-        <a href="index.html"><img src="./images/home-unselected-state-svgrepo-com.svg" alt="#"
-                class="navbar-icon inline-block mr-2"></a>
-                <div class="text-4xl md:text-4xl italic">
-                    <a href="index.html">HomeBites</a>
-                </div>   
+        <a href="index.html">
+            <img src="./images/home-unselected-state-svgrepo-com.svg" alt="#" class="navbar-icon inline-block mr-2">
+        </a>
+        <div class="text-4xl md:text-4xl italic">
+            <a href="index.html">HomeBites</a>
+        </div>
     </div>
     <div class="flex items-center space-x-3">
         <input type="text"
@@ -15,25 +16,28 @@
             Search
         </button>
         <div class="dropdown flex-row flex-1">
-        <button class="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 6l16 0" />
-                <path d="M4 12l16 0" />
-                <path d="M4 18l16 0" />
-            </svg>
-        </button>
-            <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="browse.html">Browse Food</a></li>
-            <li><a class="dropdown-item" href="browse_restaurants.html">Browse Restaurants</a></li>
-            <li><a class="dropdown-item" href="orders.html">Orders</a></li>
-            <li><a class="dropdown-item" href="track_order.html">Track orders</a></li>
-            <li><a class="dropdown-item" href="reviews.html">Reviews</a></li>
-            <li><a class="dropdown-item" href="#">About Us</a></li>
-            <li><a class="dropdown-item" href="#">Contact Us</a></li>
-            <li><a class="dropdown-item" href="index.html">Logout</a></li>
+            <button class="flex items-center justify-center bg-transparent border-none text-white hover:bg-white/20"
+                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 6l16 0" />
+                    <path d="M4 12l16 0" />
+                    <path d="M4 18l16 0" />
+                </svg>
+            </button>
+            <ul class="dropdown-menu bg-orange-400 border-none">
+                <li><a class="dropdown-item text-white hover:bg-orange-400" href="browse.html">Browse Food</a></li>
+                <li><a class="dropdown-item text-white hover:bg-orange-400" href="browse_restaurants.html">Browse
+                        Restaurants</a></li>
+                <li><a class="dropdown-item text-white hover:bg-orange-400" href="orders.html">Orders</a></li>
+                <li><a class="dropdown-item text-white hover:bg-orange-400" href="track_order.html">Track orders</a>
+                </li>
+                <li><a class="dropdown-item text-white hover:bg-orange-400" href="reviews.html">Reviews</a></li>
+                <li><a class="dropdown-item text-white hover:bg-orange-400" href="#">About Us</a></li>
+                <li><a class="dropdown-item text-white hover:bg-orange-400" href="#">Contact Us</a></li>
+                <li><a class="dropdown-item text-white hover:bg-orange-400" href="index.html">Logout</a></li>
             </ul>
         </div>
     </div>
