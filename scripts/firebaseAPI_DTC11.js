@@ -2,12 +2,13 @@
 //  Your web app's Firebase configuration
 //----------------------------------------
 const firebaseConfig = {
-    apiKey: "AIzaSyBJUSJG0kYRSpkkRXNz4EEuxq8hx65NNDA",
-    authDomain: "comp1800-202430-demo-eb71e.firebaseapp.com",
-    projectId: "comp1800-202430-demo-eb71e",
-    storageBucket: "comp1800-202430-demo-eb71e.appspot.com",
-    messagingSenderId: "100814248341",
-    appId: "1:100814248341:web:8e28a7c5904490030dfe9c"
+    apiKey: "AIzaSyC_-_WfwKI2q_Xjm1ZnnVC0rqK292ZU2m0",
+    authDomain: "homebites-579e6.firebaseapp.com",
+    projectId: "homebites-579e6",
+    storageBucket: "homebites-579e6.appspot.com",
+    messagingSenderId: "455791707920",
+    appId: "1:455791707920:web:efa27b046ebc8fd3ac0795",
+    measurementId: "G-EE0KYLQ42F"
 };
 
 //--------------------------------------------
