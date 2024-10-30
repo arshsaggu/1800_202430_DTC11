@@ -4,19 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders</title>
+    <title>HomeBites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="./scripts/firebaseAPI_DTC11.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
+    <!-- <script src="./scripts/script.js"></script> -->
+    <!-- <script src="./scripts/authentication.js"></script> -->
+</head>
 
     <style>
         
@@ -45,49 +52,8 @@
         }
     </style>
 
-</head>
-
 <body class="bg-orange-100">
-    <nav class="flex justify-between items-center bg-orange-500 p-2 text-xl text-white font-bold">
-        <div class="hidden md:flex text-sm mt-1 navbar-text">
-            <a href="index.html"><img src="./images/home-unselected-state-svgrepo-com.svg" alt="#"
-                    class="navbar-icon inline-block mr-2"></a>
-            <div class="text-4xl md:text-4xl italic">
-                <a href="index.html">HomeBites</a>
-            </div>
-        </div>
-        <div class="flex items-center space-x-3">
-            <input type="text"
-                class="border-2 border-green-500 rounded-xl text-slate-400 text-sm w-32 md:w-48 h-10 md:h-10 px-2"
-                placeholder="Search">
-            <button
-                class="text-sm py-2 px-4 border-2 border-green-500 rounded-xl text-green-700 bg-green-300 w-20 md:w-auto h-10 md:h-10">
-                Search
-            </button>
-            <div class="dropdown flex-row flex-1">
-                <button class="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M4 6l16 0" />
-                        <path d="M4 12l16 0" />
-                        <path d="M4 18l16 0" />
-                    </svg>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="browse.html">Browse Food</a></li>
-                    <li><a class="dropdown-item" href="browse_restaurants.html">Browse Restaurants</a></li>
-                    <li><a class="dropdown-item" href="orders.html">Orders</a></li>
-                    <li><a class="dropdown-item" href="track_order.html">Track orders</a></li>
-                    <li><a class="dropdown-item" href="reviews.html">Reviews</a></li>
-                    <li><a class="dropdown-item" href="#">About Us</a></li>
-                    <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                    <li><a class="dropdown-item" href="index.html">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<nav id="navbarPlaceholder"></nav>
     <div class="container mt-3">
         <h1 class="text-center text-3xl mb-3 font-bold"><u>Orders</u></h1>
 
