@@ -67,39 +67,12 @@
     <!-- our own navbar goes here -->
     <nav id="navbarPlaceholder"></nav>
 
-    <!-- the body of your page goes here -->
-    <div class="container-fluid bg-light text-dark p-5" id="tuple1">
-        <div class="container bg-light p-5">
-            <h1 class="display-4">Good morning, <span id="name-goes-here"></span></h1>
-            <hr>
-            <p>Quote of the day: <span id="quote-goes-here"></span></p>
-        </div>
-    </div>
 
-    <!-- Templates for general use, not displayed -->
-    <template id="foodCardTemplate">
-        <div class="card py-2 mx-2" style="width: 18rem">
-            <img class="card-image card-img-top" src=" ..." alt="..." />
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-length">placeholder</p>
-                <br />
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </p>
-                <a class="btn btn-primary card-href">Read more ...</a>
-            </div>
-        </div>
-    </template>
-
-    <div class="container" id="tuple1">
-        <h1 class="text-center mb-4 text-2xl"><u>Browse</u></h1>
-
-        <div class="container">
-            <div id="foodItems-go-here" class="row row-cols-1 row-cols-md-3 g-4">
-            </div>
-        </div>
+    <div class="container text-5xl text-center underline" id="tuple1">
+        <h1><span id="localChefName"></span></h1>
+        <img class="localChef-img mx-auto block max-w-full h-auto rounded-lg shadow-lg" src="" height="300px"
+            width="400px" />
+        <div id="details-go-here"></div>
     </div>
 
 
@@ -109,8 +82,9 @@
 
     <script src="./scripts/firebaseAPI_DTC11.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/main.js"></script>
-
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/eachLocalChef.js"></script>
+    <!-- <script src="./scripts/main.js"></script> -->
 
 </body>
 

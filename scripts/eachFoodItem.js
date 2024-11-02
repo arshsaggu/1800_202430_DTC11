@@ -1,9 +1,9 @@
 function displayFoodInfo() {
-    let params = new URL(window.location.href); //get URL of search bar
-    let ID = params.searchParams.get("docID"); //get value for key "id"
+    let params = new URL(window.location.href); 
+    let ID = params.searchParams.get("docID"); 
     console.log(ID);
 
-    // doublecheck: is your collection called "Reviews" or "reviews"?
+    
     db.collection("foodItems")
         .doc(ID)
         .get()
@@ -12,7 +12,7 @@ function displayFoodInfo() {
             foodCode = thisFood.code;
             foodName = doc.data().name;
 
-            // only populate title, and image
+            
             document.getElementById("foodName").innerHTML = foodName;
             let imgEvent = document.querySelector(".food-img");
             imgEvent.src = "../images/" + foodCode + ".jpg";
