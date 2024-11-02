@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeBites</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -18,127 +23,91 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <script src="./scripts/firebaseAPI_DTC11.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
     <!-- <script src="./scripts/script.js"></script> -->
     <!-- <script src="./scripts/authentication.js"></script> -->
 </head>
-    <style>
-        .card {
-            height: 400px;
-        }
+<style>
+    .card {
+        height: 400px;
+    }
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
 
-        .card-body {
-            height: 200px;
-        }
+    .card-body {
+        height: 200px;
+    }
 
-        .navbar-icon {
-            width: 40px;
-            height: 40px;
-            vertical-align: middle;
-        }
+    .navbar-icon {
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+    }
 
-        .navbar-text {
-            display: flex;
-            align-items: center;
-        }
-    </style>
+    .navbar-text {
+        display: flex;
+        align-items: center;
+    }
+</style>
 
 <body class="bg-orange-100">
-<nav id="navbarPlaceholder"></nav>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-    <div class="container mt-3" id="tuple1">
-        <h1 class="text-center mb-3 font-bold text-xl"><u>Browse Our Delicious Meals</u></h1>
-        <div class="row">
+    <!-- our own navbar goes here -->
+    <nav id="navbarPlaceholder"></nav>
 
-            <!-- Food Item #1 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/Antipasto-chickpea-salad_8.webp" class="card-img-top p-2" alt="Chickpea Salad">
-                    <div class="card-body">
-                        <h5 class="card-title">Chickpea Salad</h5>
-                        <p class="card-text mb-2">A fresh and healthy salad packed with protein.</p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Food Item #2 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/Peruvian-Quinoa-Salad-1-2.jpg" class="card-img-top p-2" alt="Quinoa Bowl">
-                    <div class="card-body">
-                        <h5 class="card-title">Quinoa Bowl</h5>
-                        <p class="card-text mb-2">A nutritious bowl of quinoa with seasonal vegetables.</p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Food Item #3 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/chicken-curry.jpg" class="card-img-top p-2" alt="Chicken Curry">
-                    <div class="card-body">
-                        <h5 class="card-title">Chicken Curry</h5>
-                        <p class="card-text mb-2">Delicious homemade chicken curry with spices.</p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Food Item #4 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/Easy-Vegetable-Stir-Fry-V1-800x1067.webp" class="card-img-top p-2"
-                        alt="Vegetable Stir Fry">
-                    <div class="card-body">
-                        <h5 class="card-title">Vegetable Stir Fry</h5>
-                        <p class="card-text mb-2">A colorful mix of seasonal vegetables stir-fried to perfection.</p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Food Item #5 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/Umamiology-Spaghetti-Bolognese-RecipeCard16.jpg" class="card-img-top p-2"
-                        alt="Spaghetti Bolognese">
-                    <div class="card-body">
-                        <h5 class="card-title">Spaghetti Bolognese</h5>
-                        <p class="card-text mb-2">Classic spaghetti served with a rich and savory meat sauce.</p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Food Item #6 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/Blog-Chicken-Caesar-Salad-1-scaled.webp" class="card-img-top p-2"
-                        alt="Caesar Salad">
-                    <div class="card-body">
-                        <h5 class="card-title">Caesar Salad</h5>
-                        <p class="card-text mb-2">Crisp romaine lettuce with Caesar dressing, croutons, and parmesan.
-                        </p>
-                        <a href="#" class="btn btn-primary">Order Now</a>
-                    </div>
-                </div>
-            </div>
-
+    <!-- the body of your page goes here -->
+    <div class="container-fluid bg-light text-dark p-5" id="tuple1">
+        <div class="container bg-light p-5">
+            <h1 class="display-4">Good morning, <span id="name-goes-here"></span></h1>
+            <hr>
+            <p>Quote of the day: <span id="quote-goes-here"></span></p>
         </div>
     </div>
+
+    <!-- Templates for general use, not displayed -->
+    <template id="foodCardTemplate">
+        <div class="card py-2 mx-2" style="width: 18rem">
+            <img class="card-image card-img-top" src=" ..." alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-length">placeholder</p>
+                <br />
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a class="btn btn-primary card-href">Read more ...</a>
+            </div>
+        </div>
+    </template>
+
+    <div class="container" id="tuple1">
+        <h1 class="text-center mb-4 text-2xl"><u>Browse</u></h1>
+
+        <div class="container">
+            <div id="foodItems-go-here" class="row row-cols-1 row-cols-md-3 g-4">
+            </div>
+        </div>
+    </div>
+
 
     <footer class="bg-orange-500 text-white text-center p-3 mt-5">
         <p>&copy; 2024 HomeBites. All rights reserved.</p>
     </footer>
+
+    <script src="./scripts/firebaseAPI_DTC11.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
 
 </body>
 

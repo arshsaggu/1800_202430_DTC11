@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeBites</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -18,134 +23,93 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <script src="./scripts/firebaseAPI_DTC11.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
     <!-- <script src="./scripts/script.js"></script> -->
     <!-- <script src="./scripts/authentication.js"></script> -->
 </head>
-    <style>
-        .card {
-            height: 400px;
-        }
+<style>
+    .card {
+        height: 400px;
+    }
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
 
-        .card-body {
-            height: 200px;
-        }
+    .card-body {
+        height: 200px;
+    }
 
-        .navbar-icon {
-            width: 40px;
-            height: 40px;
-            vertical-align: middle;
-        }
+    .navbar-icon {
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+    }
 
-        .navbar-text {
-            display: flex;
-            align-items: center;
-        }
-    </style>
+    .navbar-text {
+        display: flex;
+        align-items: center;
+    }
+</style>
 
 <body class="bg-orange-100">
-<nav id="navbarPlaceholder"></nav>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-    <div class="container mt-3" id="tuple1">
-        <h1 class="text-center text-xl mb-3 font-bold"><u>Discover Top-Rated Home Chefs</u></h1>
-        <div class="row">
+    <!-- our own navbar goes here -->
+    <nav id="navbarPlaceholder"></nav>
 
-            <!-- Home Chef #1 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/Momo3.png.webp" class="card-img-top p-2" alt="Chickpea Salad">
-                    <div class="card-body">
-                        <h5 class="card-title text-xl font-bold">Momo-Hut</h5>
-                        <p class="card-text mb-2">"Taste the Love in Every Bite!"</p>
-                        <p class="card-text mb-2">A fresh and healthy salad packed with protein.</p>
-                        <a href="#" class="btn btn-primary">Browse</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Home Chef #2 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/flavors-of-the-mediterranean.webp" class="card-img-top p-2" alt="Quinoa Bowl">
-                    <div class="card-body">
-                        <h5 class="card-title  text-xl font-bold">Mediterranean Feast</h5>
-                        <p class="card-text mb-2">"Savor the Flavors of the Mediterranean!"</p>
-                        <p class="card-text mb-2">A vibrant dish featuring grilled meats, fresh herbs, and zesty sauces.
-                        </p>
-                        <a href="#" class="btn btn-primary">Browse</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Home Chef #3 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/Julne-blog-2017.jpg" class="card-img-top p-2" alt="Chicken Curry">
-                    <div class="card-body">
-                        <h5 class="card-title  text-xl font-bold">Spice Kitchen</h5>
-                        <p class="card-text mb-2">"Bringing the Heat to Your Table!"</p>
-                        <p class="card-text mb-2">Delicious homemade chicken curry with spices.</p>
-                        <a href="#" class="btn btn-primary">Browse</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Home Chef #4 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/1000s.jpg" class="card-img-top p-2" alt="Sushi Platter">
-                    <div class="card-body">
-                        <h5 class="card-title text-xl font-bold">Sushi Haven</h5>
-                        <p class="card-text mb-2">"Fresh Flavors Rolled to Perfection!"</p>
-                        <p class="card-text mb-2">An assortment of handcrafted sushi rolls and sashimi.</p>
-                        <a href="#" class="btn btn-primary">Browse</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Home Chef #5 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/The-Ultimate-Vegan-Appetizer-Platter-from-HeatherChristo.com_.jpg" class="card-img-top p-2" alt="Vegan Bowl">
-                    <div class="card-body">
-                        <h5 class="card-title text-xl font-bold">Plant Power</h5>
-                        <p class="card-text mb-2">"Nourishing Your Body, One Bite at a Time!"</p>
-                        <p class="card-text mb-2">A colorful vegan bowl filled with quinoa, roasted vegetables, and tahini sauce.
-                        </p>
-                        <a href="#" class="btn btn-primary">Browse</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Home Chef #6 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/taco+feast.jpg" class="card-img-top p-2" alt="Taco Bar">
-                    <div class="card-body">
-                        <h5 class="card-title text-xl font-bold">Taco Fiesta</h5>
-                        <p class="card-text mb-2">"Tacos Done Your Way!"</p>
-                        <p class="card-text mb-2">Customizable taco kits with fresh ingredients and bold flavors.</p>
-                        <a href="#" class="btn btn-primary">Browse</a>
-                    </div>
-                </div>
-            </div>
-
-            
+    <!-- the body of your page goes here -->
+    <div class="container-fluid bg-light text-dark p-5" id="tuple1">
+        <div class="container bg-light p-5">
+            <h1 class="display-4">Good morning, <span id="name-goes-here"></span></h1>
+            <hr>
+            <p>Quote of the day: <span id="quote-goes-here"></span></p>
         </div>
     </div>
 
-    
+    <!-- Templates for general use, not displayed -->
+    <template id="browseChefCardTemplate">
+        <div class="card py-2 mx-2" style="width: 18rem">
+            <img class="card-image card-img-top" src=" ..." alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-length">placeholder</p>
+                <br />
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                </p>
+                <a class="btn btn-primary card-href">Read more ...</a>
+            </div>
+        </div>
+    </template>
+
+    <div class="container" id="tuple1">
+        <h1 class="text-center mb-4 text-2xl"><u>Browse</u></h1>
+
+        <div class="container">
+            <div id="restaurants-go-here" class="row row-cols-1 row-cols-md-3 g-4">
+            </div>
+        </div>
+    </div>
+
 
     <footer class="bg-orange-500 text-white text-center p-3 mt-5">
         <p>&copy; 2024 HomeBites. All rights reserved.</p>
     </footer>
+
+    <script src="./scripts/firebaseAPI_DTC11.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
 
 </body>
 
