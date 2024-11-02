@@ -11,11 +11,13 @@ function displayFoodInfo() {
             thisFood = doc.data();
             foodCode = thisFood.code;
             foodName = doc.data().name;
+            FoodDescription = thisFood.description
 
             
             document.getElementById("foodName").innerHTML = foodName;
             let imgEvent = document.querySelector(".food-img");
             imgEvent.src = "../images/" + foodCode + ".jpg";
+            document.getElementById("foodDescription").innerHTML = FoodDescription; 
         });
 }
 displayFoodInfo();
