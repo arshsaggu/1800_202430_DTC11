@@ -127,6 +127,7 @@ function displayFoodCardsDynamically(collection) {
                 newCard.querySelector('.card-title').innerHTML = title;
                 newCard.querySelector('.card-text').innerHTML = description;
                 newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`; //Example: NV01.jpg
+                newCard.querySelector('a').href = "eachFoodItem.html?docID=" + docID;
                 // Attach the new card to the container (e.g., "food-go-here")
                 document.getElementById(collection + "-go-here").appendChild(newCard);
             });
@@ -139,8 +140,10 @@ function displayFoodCardsDynamically(collection) {
 // Call the function to display food items
 displayFoodCardsDynamically("foodItems");
 
+
+
 function browseRestaurants() {
-    var restaurantsRef = db.collection("restaurants");
+    var restaurantsRef = db.collection("localchefs");
 
     restaurantsRef.add(
         {
@@ -209,6 +212,7 @@ function displayRestaurantCardsDynamically(collection) {
                 newCard.querySelector('.card-title').innerHTML = title;
                 newCard.querySelector('.card-text').innerHTML = description;
                 newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`; //Example: NV01.jpg
+                
                 // Attach the new card to the container (e.g., "food-go-here")
                 document.getElementById(collection + "-go-here").appendChild(newCard);
             });
@@ -219,4 +223,4 @@ function displayRestaurantCardsDynamically(collection) {
 }
 
 // Call the function to display food items
-displayRestaurantCardsDynamically("restaurants");
+displayRestaurantCardsDynamically("localchefs");
