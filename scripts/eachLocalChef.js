@@ -11,11 +11,13 @@ function displaylocalChefInfo() {
             thislocalChef = doc.data();
             foodCode = thislocalChef.code;
             localChefName = doc.data().name;
+            localChefDescription = thislocalChef.description
 
 
             document.getElementById("localChefName").innerHTML = localChefName;
             let imgEvent = document.querySelector(".localChef-img");
             imgEvent.src = "../images/" + foodCode + ".jpg";
+            document.getElementById("localChefDescription").innerHTML = localChefDescription; 
         });
 }
 displaylocalChefInfo();
