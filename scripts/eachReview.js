@@ -1,10 +1,10 @@
 function getHikeName(id) {
-	  db.collection("hikes")
+	  db.collection("reviews")
 	    .doc(id)
 	    .get()
 	    .then((thisHike) => {
 	      var hikeName = thisHike.data().name;
-	      document.getElementById("hikeName").innerHTML = hikeName;
+	      document.getElementById("review").innerHTML = hikeName;
 			});
 }
 
@@ -27,24 +27,17 @@ stars.forEach((star, index) => {
 });
 
 function writeReview() {
-    console.log("inside write review");
-    let hikeTitle = document.getElementById("title").value;
-    let hikeLevel = document.getElementById("level").value;
-    let hikeSeason = document.getElementById("season").value;
-    let hikeDescription = document.getElementById("description").value;
-    let hikeFlooded = document.querySelector('input[name="flooded"]:checked').value;
-    let hikeScrambled = document.querySelector('input[name="scrambled"]:checked').value;
-
+    let userName = document.getElementById("userName").value;
+    let userComment = document.getElementById("userComment").value;
+    
     // Get the star rating
     const stars = document.querySelectorAll('.star');
-    let hikeRating = 0;
+    let rating = 0;
     stars.forEach((star) => {
-        if (star.textContent === 'star') {
-            hikeRating++;
+        if (star.textContent === '★') {
+            rating++;
         }
     });
-
-    console.log(hikeTitle, hikeLevel, hikeSeason, hikeDescription, hikeFlooded, hikeScrambled, hikeRating);
 
     var user = firebase.auth().currentUser;
     if (user) {
@@ -52,21 +45,61 @@ function writeReview() {
 
         // Write the review to Firestore
         db.collection("reviews").add({
-            hikeDocID: localStorage.getItem("hikeDocID"),
             userID: userID,
-            title: hikeTitle,
-            level: hikeLevel,
-            season: hikeSeason,
-            description: hikeDescription,
-            flooded: hikeFlooded,
-            scrambled: hikeScrambled,
-            rating: hikeRating,
+            userName: userName,
+            comment: userComment,
+            rating: rating,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(() => {
-            window.location.href = "thanks.html"; // Redirect to the thanks page
+            window.location.href = "reviews.html"; // Redirect to reviews page
         });
     } else {
         console.log("No user is signed in");
-        window.location.href = 'review.html';
+        window.location.href = 'login.html';
     }
+}
+
+function populateReviews() {
+    let reviewsContainer = document.querySelector('.grid');
+    
+    db.collection("reviews")
+        .orderBy("timestamp", "desc")
+        .get()
+        .then((allReviews) => {
+            allReviews.forEach((doc) => {
+                const review = doc.data();
+                
+                // Create review card
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'bg-white p-6 rounded-lg shadow-lg';
+                
+                // Create star rating HTML
+                let starRating = "";
+                for (let i = 0; i < review.rating; i++) {
+                    starRating += '★';
+                }
+                for (let i = review.rating; i < 5; i++) {
+                    starRating += '☆';
+                }
+                
+                // Populate review card
+                reviewCard.innerHTML = `
+                    <div class="flex items-center gap-4 mb-4">
+                        <h3 class="font-bold text-lg">${review.userName}</h3>
+                    </div>
+                    <div class="text-orange-500 mb-2">${starRating}</div>
+                    <p class="text-gray-700">${review.comment}</p>
+                    <div class="text-gray-500 text-sm mt-2">
+                        ${review.timestamp ? new Date(review.timestamp.toDate()).toLocaleString() : ''}
+                    </div>
+                `;
+                
+                reviewsContainer.appendChild(reviewCard);
+            });
+        });
+}
+
+// Initialize based on current page
+if (window.location.pathname.includes('reviews.html')) {
+    populateReviews();
 }
