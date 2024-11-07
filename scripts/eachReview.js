@@ -1,8 +1,8 @@
 function displayReviews() {
     let params = new URL(window.location.href);
-    let chefID = params.searchParams.get("chefID");
+    let chefID = params.searchParams.get("docID");
     
-    // First get chef info
+    // Get chef info
     db.collection("localchefs")
         .doc(chefID)
         .get()
@@ -11,14 +11,14 @@ function displayReviews() {
             document.querySelector('h1').textContent = `Reviews for ${chefData.name}`;
         });
 
-    // Then get all reviews for this chef
+    // Get reviews from separate reviews collection
     db.collection("reviews")
         .where("chefID", "==", chefID)
         .orderBy("timestamp", "desc")
         .get()
         .then(querySnapshot => {
             const reviewsContainer = document.querySelector('.grid');
-            reviewsContainer.innerHTML = ''; // Clear existing reviews
+            reviewsContainer.innerHTML = '';
 
             querySnapshot.forEach(doc => {
                 const review = doc.data();
@@ -42,6 +42,9 @@ function displayReviews() {
                         </div>
                         <h4 class="font-bold mb-2">${review.title}</h4>
                         <p class="text-gray-600">${review.text}</p>
+                        <p class="text-sm text-gray-500 mt-2">
+                            ${review.timestamp ? new Date(review.timestamp.toDate()).toLocaleDateString() : ''}
+                        </p>
                     </div>
                 `;
                 reviewsContainer.insertAdjacentHTML('beforeend', reviewHTML);

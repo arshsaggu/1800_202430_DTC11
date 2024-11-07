@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeBites</title>
+    <title>Add Review - HomeBites</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -20,86 +20,65 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="./scripts/firebaseAPI_DTC11.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/main.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
-    <!-- <script src="./scripts/authentication.js"></script> -->
-    <script src="./scripts/eachReview.js"></script>
-</head>
     <style>
-        .card {
-            height: 400px;
-        }
-
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            height: 200px;
-        }
-
-        .navbar-icon {
-            width: 40px;
-            height: 40px;
-            vertical-align: middle;
-        }
-
-        .navbar-text {
-            display: flex;
-            align-items: center;
-        }
-
-        .stars {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-        }
         .star {
             font-size: 24px;
-            color: #f97316;
             cursor: pointer;
-            user-select: none;
-            transition: transform 0.1s;
+            color: #FFA500;
         }
+
         .star:hover {
-            transform: scale(1.2);
+            color: #FF8C00;
         }
     </style>
+</head>
 
 <body class="bg-orange-100">
-<nav id="navbarPlaceholder"></nav>
+    <nav id="navbarPlaceholder"></nav>
 
-<div class="bg-white rounded-lg shadow-lg p-6 w-96 items-center justify-center mx-auto my-auto">
-    <div class="flex items-center gap-4 mb-4">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-            <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-            <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
-        </svg>
-        <input type="text" id="userName" placeholder="Enter Name"
-            class="bg-white text-black font-bold text-lg w-full focus:outline-none" />
+    <div class="container mt-5">
+        <h1 class="text-center text-3xl mb-4 font-bold"><u>Add Your Review</u></h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card p-4 shadow-lg">
+                    <form id="review-form">
+                        <div class="mb-3">
+                            <label for="title" class="form-label font-bold">Review Title</label>
+                            <input type="text" class="form-control" id="title" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-bold">Rating</label>
+                            <div class="star-rating">
+                                <span class="star" id="star1">☆</span>
+                                <span class="star" id="star2">☆</span>
+                                <span class="star" id="star3">☆</span>
+                                <span class="star" id="star4">☆</span>
+                                <span class="star" id="star5">☆</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="review-text" class="form-label font-bold">Your Review</label>
+                            <textarea class="form-control" id="review-text" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded w-full">
+                            Submit Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
-  
-    <div class="stars mb-4">
-        <span class="star" id="star1">☆</span>
-        <span class="star" id="star2">☆</span>
-        <span class="star" id="star3">☆</span>
-        <span class="star" id="star4">☆</span>
-        <span class="star" id="star5">☆</span>
-    </div>
+    <footer class="bg-orange-500 text-white text-center p-3 mt-5">
+        <p>&copy; 2024 HomeBites. All rights reserved.</p>
+    </footer>
 
-
-    <textarea id="userComment" class="w-full bg-white text-gray-700 p-3 rounded-lg focus:outline-none mb-4" rows="4"
-        placeholder="Comments..."></textarea>
-
-
-    <button onclick="writeReview()" class="bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-gray-800 w-full">Submit</button>
-</div>
-
+    <script src="./scripts/add-review.js"></script>
 </body>
 
 </html>
