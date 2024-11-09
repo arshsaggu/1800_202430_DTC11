@@ -12,12 +12,14 @@ function displayFoodInfo() {
             foodCode = thisFood.code;
             foodName = doc.data().name;
             FoodDescription = thisFood.description
+            Foodprice = thisFood.price
 
             
             document.getElementById("foodName").innerHTML = foodName;
             let imgEvent = document.querySelector(".food-img");
             imgEvent.src = "../images/" + foodCode + ".jpg";
             document.getElementById("foodDescription").innerHTML = FoodDescription; 
+            document.getElementById("foodPrice").innerHTML = Foodprice; 
         });
 }
 displayFoodInfo();

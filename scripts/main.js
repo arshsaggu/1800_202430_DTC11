@@ -113,10 +113,11 @@ function writeFoodItems() {
 
 function displayFoodCardsDynamically(collection) {
     let cardTemplate = document.getElementById("foodCardTemplate"); // Retrieve the HTML template for food cards
-
+console.log(collection)
     db.collection(collection).get()   // Fetch the collection called "foodItems"
         .then(allFoodItems => {
-            allFoodItems.forEach(doc => { // Iterate through each document in the collection
+          console.log(allFoodItems)  
+          allFoodItems.forEach(doc => { // Iterate through each document in the collection
                 var title = doc.data().name;       // Get the value of the "name" key
                 var description = doc.data().description;  // Get the value of the "description" key
                 var foodCode = doc.data().code;    // Get unique code for food items
