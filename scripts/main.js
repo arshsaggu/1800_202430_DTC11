@@ -130,8 +130,6 @@ function displayFoodCardsDynamically(collection) {
                 newCard.querySelector('.card-text').innerHTML = description;
                 newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`;
                 newCard.querySelector('a').href = "eachFoodItem.html?docID=" + docID; // Read more link
-
-                // Add click event listener to the "Order Now" button
                 newCard.querySelector('.order-btn').addEventListener('click', function (event) {
                     event.preventDefault(); // Prevent the default action (e.g., navigating if href is used)
                     showConfirmationDialog(title, price); // Show the confirmation dialog
@@ -142,6 +140,7 @@ function displayFoodCardsDynamically(collection) {
             });
         })
         .catch(error => {
+
             console.error("Error fetching food items: ", error);
         });
 }
@@ -152,18 +151,13 @@ function showConfirmationDialog(title, price) {
     let userConfirmed = window.confirm(`Are you sure you want to order "${title}" for $${price}?`);
 
     if (userConfirmed) {
-        // User clicked "Yes"
         alert("Order successfully placed!");  // Show success message
     } else {
-        // User clicked "No"
+
         alert("Order canceled.");  // Show cancellation message
     }
 }
-
-// Call the function to display food items
 displayFoodCardsDynamically("foodItems");
-
-
 
 
 function browseRestaurants() {
@@ -237,7 +231,7 @@ function displayRestaurantCardsDynamically(collection) {
                 newCard.querySelector('.card-text').innerHTML = description;
                 newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`; //Example: NV01.jpg
                 newCard.querySelector('a').href = "eachLocalChef.html?docID=" + docID;
-                
+
                 // Attach the new card to the container (e.g., "food-go-here")
                 document.getElementById(collection + "-go-here").appendChild(newCard);
             });

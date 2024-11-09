@@ -1,7 +1,7 @@
 function displayReviews() {
     let params = new URL(window.location.href);
     let chefID = params.searchParams.get("docID");
-    
+
     // Get chef info
     db.collection("localchefs")
         .doc(chefID)
@@ -36,7 +36,7 @@ function displayReviews() {
                             <div>
                                 <h3 class="font-semibold text-lg">${review.userName}</h3>
                                 <div class="flex">
-                                    ${"★".repeat(review.rating)}${"☆".repeat(5-review.rating)}
+                                    ${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}
                                 </div>
                             </div>
                         </div>

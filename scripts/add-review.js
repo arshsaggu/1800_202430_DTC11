@@ -18,10 +18,10 @@ function updateStars() {
 // Handle form submission
 document.getElementById('review-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const params = new URL(window.location.href);
     const chefID = params.searchParams.get("chefID");
-    
+
     const reviewData = {
         chefID: chefID,
         title: document.getElementById('title').value,
