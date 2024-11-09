@@ -112,34 +112,57 @@ function writeFoodItems() {
 }
 
 function displayFoodCardsDynamically(collection) {
-    let cardTemplate = document.getElementById("foodCardTemplate"); // Retrieve the HTML template for food cards
-console.log(collection)
+    let cardTemplate = document.getElementById("foodCardTemplate");
+    console.log(collection);
     db.collection(collection).get()   // Fetch the collection called "foodItems"
         .then(allFoodItems => {
-          console.log(allFoodItems)  
-          allFoodItems.forEach(doc => { // Iterate through each document in the collection
-                var title = doc.data().name;       // Get the value of the "name" key
-                var description = doc.data().description;  // Get the value of the "description" key
-                var foodCode = doc.data().code;    // Get unique code for food items
-                var price = doc.data().price;      // Get the price of the food item
-                var docID = doc.id;                // Get the document ID
-                let newCard = cardTemplate.content.cloneNode(true); // Clone the HTML template for a new card
-                // Update the title, description, price, and image
+            console.log(allFoodItems);
+            allFoodItems.forEach(doc => { // Iterate through each document in the collection
+                var title = doc.data().name;
+                var description = doc.data().description;
+                var foodCode = doc.data().code;
+                var price = doc.data().price;
+                var docID = doc.id;  // Document ID for identifying the food item
+                let newCard = cardTemplate.content.cloneNode(true); // Clone the template for each card
+
+                // Update the content dynamically
                 newCard.querySelector('.card-title').innerHTML = title;
                 newCard.querySelector('.card-text').innerHTML = description;
-                newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`; //Example: NV01.jpg
-                newCard.querySelector('a').href = "eachFoodItem.html?docID=" + docID;
-                // Attach the new card to the container (e.g., "food-go-here")
+                newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`;
+                newCard.querySelector('a').href = "eachFoodItem.html?docID=" + docID; // Read more link
+
+                // Add click event listener to the "Order Now" button
+                newCard.querySelector('.order-btn').addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent the default action (e.g., navigating if href is used)
+                    showConfirmationDialog(title, price); // Show the confirmation dialog
+                });
+
+                // Append the new card to the container
                 document.getElementById(collection + "-go-here").appendChild(newCard);
             });
         })
         .catch(error => {
-            console.error("Error fetching food items: ", error); // Handle errors
+            console.error("Error fetching food items: ", error);
         });
+}
+
+// Function to show the confirmation dialog
+function showConfirmationDialog(title, price) {
+    // Display the confirmation dialog
+    let userConfirmed = window.confirm(`Are you sure you want to order "${title}" for $${price}?`);
+
+    if (userConfirmed) {
+        // User clicked "Yes"
+        alert("Order successfully placed!");  // Show success message
+    } else {
+        // User clicked "No"
+        alert("Order canceled.");  // Show cancellation message
+    }
 }
 
 // Call the function to display food items
 displayFoodCardsDynamically("foodItems");
+
 
 
 
