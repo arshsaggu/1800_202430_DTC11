@@ -167,7 +167,7 @@ function browseRestaurants() {
             code: "spice-kitchen",
             name: "Spice Kitchen",
             tagline: "Bringing the Heat to Your Table!",
-            description: "Homemade chicken curry with an explosion of spices.",
+            description: "Homemade chicken curry with an explosion of spices and flavors.",
             cuisine: "Indian",
             last_updated: firebase.firestore.FieldValue.serverTimestamp()
         }),

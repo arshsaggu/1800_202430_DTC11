@@ -34,19 +34,6 @@
     <!-- <script src="./scripts/authentication.js"></script> -->
 </head>
 <style>
-    .card {
-        height: 400px;
-    }
-
-    .card-img-top {
-        height: 200px;
-        object-fit: cover;
-    }
-
-    .card-body {
-        height: 200px;
-    }
-
     .navbar-icon {
         width: 40px;
         height: 40px;
@@ -56,6 +43,17 @@
     .navbar-text {
         display: flex;
         align-items: center;
+    }
+
+
+    .card-image {
+        height: 250px;
+        width: 250p;
+        object-fit: cover;
+    }
+
+    .card {
+        box-shadow: 5px 10px gray;
     }
 </style>
 
@@ -72,30 +70,32 @@
 
     <!-- Templates for general use, not displayed -->
     <template id="browseChefCardTemplate">
-        <div class="card py-2 mx-2" style="width: 18rem">
+        <div class="card py-2 mx-2" style="width: 24rem">
             <img class="card-image card-img-top" src=" ..." alt="..." />
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
-                
+
                 <br />
                 <p class="card-text">
                     Some quick example text to build on the card title and make up the
                     bulk of the card's content.
                 </p>
-                <a class="btn btn-primary card-href mt-4">Read more</a>
+<a class="btn btn-primary card-href mt-4">Read more</a>
+<a class="btn btn-primary card-href mt-4 ml-10">Order Now</a>
             </div>
         </div>
     </template>
 
     <div class="container" id="tuple1">
-        <h1 class="text-center mb-4 text-2xl"><u>Browse</u></h1>
+        <h1 class="text-left mb-8 text-4xl ml-2 p-2 mt-10"><u>Local Chefs Near You</u>
+            <hr>
+        </h1>
 
         <div class="container">
             <div id="localchefs-go-here" class="row row-cols-1 row-cols-md-3 g-4">
             </div>
         </div>
     </div>
-
 
     <footer class="bg-orange-500 text-white text-center p-3 mt-5">
         <p>&copy; 2024 HomeBites. All rights reserved.</p>
