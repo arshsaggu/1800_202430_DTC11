@@ -47,7 +47,7 @@
     }
 
     .card {
-        box-shadow: 5px 10px gray;
+        box-shadow: 5px 10px gainsboro;
     }
 </style>
 
@@ -57,7 +57,7 @@
 
     <div class="container-fluid bg-orange-100 text-dark p-5 mb-4" id="tuple1">
         <div class="container bg-orange-100 p-5">
-            <h1 class="display-4">Good morning, <span id="name-goes-here"></span></h1>
+            <h1 class="display-3">Good morning, <span id="name-goes-here"></span></h1>
             <hr>
             <p>Quote of the day: <span id="quote-goes-here"></span></p>
         </div>
@@ -83,18 +83,18 @@
 
 
         <div class="container" id="tuple1">
-            <h1 class="text-left mb-8 text-4xl ml-2 p-2"><u>Popular Food Items</u>
+            <h1 class="text-center mb-8 text-4xl ml-2 p-2"><u>Popular Food Items</u>
                 <hr>
             </h1>
 
             <div class="container">
-                <div id="foodItems-go-here" class="row row-cols-1 row-cols-md-3 g-4">
+                <div id="foodItems-go-here" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
                 </div>
             </div>
         </div>
 
 
-        <div class="text-center text-4xl mb-4 mt-20" id="tuple1"><u>Frequently Asked Questions</u> </div>
+        <div class="text-center text-2xl mb-4 mt-20" id="tuple1"><u>Frequently Asked Questions</u><hr> </div>
 
         <div id="tuple1">
             <div class="accordion" id="accordionExample">
@@ -138,6 +138,9 @@
                 </div>
             </div>
         </div>
+
+        
+
         <script src="./scripts/firebaseAPI_DTC11.js"></script>
         <script src="./scripts/skeleton.js"></script>
         <script src="./scripts/main.js"></script>
