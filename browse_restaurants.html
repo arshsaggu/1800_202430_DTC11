@@ -55,7 +55,7 @@
     .card {
         box-shadow: 5px 5px gainsboro;
     }
-    
+
 </style>
 
 <body class="bg-orange-100">
@@ -67,6 +67,18 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
+<!-- Template for displaying menu items -->
+<template id="menuItemTemplate">
+    <div class="card py-2 mx-2" style="width: 24rem">
+        <img class="card-image card-img-top" src="..." alt="..." />
+        <div class="card-body">
+            <h5 class="card-title">Menu Item Name</h5>
+            <p class="card-text">Some description of the menu item.</p>
+            <p class="card-price">$0.00</p>
+            <a class="btn btn-primary menu-item-link mt-4">View Details</a>
+        </div>
+    </div>
+</template>
 
 
     <!-- Templates for general use, not displayed -->
@@ -82,6 +94,7 @@
                     bulk of the card's content.
                 </p>
                 <a class="btn btn-primary card-href mt-4">Read more</a>
+                <a class="btn btn-primary menu-btn card-href mt-4 ml-12">View Menu</a>
 
             </div>
         </div>

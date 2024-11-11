@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeBites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    /* Grid container to display cards in 2-column layout on larger screens */
+    #menuItemsContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        max-width: 800px;
+        margin: auto;
+    }
+
+    /* Style for individual menu item cards */
+    .menu-item-card {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        text-align: center;
+        box-shadow: 5px 5px gainsboro;
+    }
+
+    /* Image styling inside cards */
+    .menu-item-image {
+        width: 100%;
+        /* Makes the image span the full width of the card */
+        height: 200px;
+        /* Sets a fixed height for all images */
+        border-radius: 8px;
+        object-fit: cover;
+        /* Ensures the image fills the container without distortion */
+    }
+
+    /* Ensure navbar and other elements aren’t affected */
+    .navbar-icon {
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+    }
+
+    .navbar-text {
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<body class="bg-orange-100">
+    <!-- Navbar Placeholder -->
+    <nav id="navbarPlaceholder"></nav>
+
+    <!-- Chef's Menu Section -->
+    <div class="container text-center underline my-5" id="tuple1">
+        <h1 id="menuName"></h1>
+        <img class="menuName-img mx-auto block max-w-full h-auto rounded-lg shadow-lg mb-4" src="" alt="Chef Image"
+            height="300px" width="400px" />
+        <div class="mt-4" id="menuDescription"></div>
+
+        <!-- Menu Items Container for Cards -->
+        <div class="container mt-4" id="menuItemsContainer">
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-orange-500 text-white text-center p-3 mt-5">
+        <p>&copy; 2024 HomeBites. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Files -->
+    <script src="./scripts/firebaseAPI_DTC11.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/eachMenu.js"></script>
+</body>
+
+</html>
