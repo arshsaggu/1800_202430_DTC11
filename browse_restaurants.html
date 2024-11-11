@@ -56,6 +56,7 @@
         box-shadow: 5px 5px gainsboro;
     }
 
+    
 </style>
 
 <body class="bg-orange-100" id="tuple1">
@@ -67,18 +68,18 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-<!-- Template for displaying menu items -->
-<template id="menuItemTemplate">
-    <div class="card py-2 mx-2" style="width: 24rem">
-        <img class="card-image card-img-top" src="..." alt="..." />
-        <div class="card-body">
-            <h5 class="card-title">Menu Item Name</h5>
-            <p class="card-text">Some description of the menu item.</p>
-            <p class="card-price">$0.00</p>
-            <a class="btn btn-primary menu-item-link mt-4">View Details</a>
+    <!-- Template for displaying menu items -->
+    <template id="menuItemTemplate">
+        <div class="card py-2 mx-2" style="width: 24rem">
+            <img class="card-image card-img-top" src="..." alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Menu Item Name</h5>
+                <p class="card-text">Some description of the menu item.</p>
+                <p class="card-price">$0.00</p>
+                <a class="btn btn-primary menu-item-link mt-4">View Details</a>
+            </div>
         </div>
-    </div>
-</template>
+    </template>
 
 
     <!-- Templates for general use, not displayed -->
@@ -93,8 +94,15 @@
                     Some quick example text to build on the card title and make up the
                     bulk of the card's content.
                 </p>
-                <a class="btn btn-primary card-href mt-4">Read more</a>
-                <a class="btn btn-primary menu-btn card-href mt-4 ml-12">View Menu</a>
+                <!-- <a class="btn btn-primary card-href mt-4">Read more</a>
+                <a class="btn btn-primary menu-btn card-href mt-4 ml-12">View Menu</a> -->
+         
+                <a
+                    class="btn btn-primary card-href text-sm py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out card-href mt-4">Read
+                    More</a>
+                <a
+                    class="btn btn-primary text-sm menu-btn py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out card-href mt-4 ml-10">View Menu</a>
+
 
             </div>
         </div>
