@@ -462,8 +462,13 @@ function displayRestaurantCardsDynamically(collection) {
                 newCard.querySelector('.card-title').innerHTML = title;
                 newCard.querySelector('.card-text').innerHTML = description;
                 newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`; //Example: NV01.jpg
-                newCard.querySelector('a').href = "eachLocalChef.html?docID=" + docID;
-                newCard.querySelector('.menu-btn').href = "eachMenu.html?docID=" + docID;
+                newCard.querySelector('.read-btn').addEventListener('click', function () {
+                    window.location.href = "eachLocalChef.html?docID=" + docID;
+                });
+
+                newCard.querySelector('.menu-btn').addEventListener('click', function () {
+                    window.location.href = "eachMenu.html?docID=" + docID;
+                });
 
                 // Attach the new card to the container (e.g., "food-go-here")
                 document.getElementById(collection + "-go-here").appendChild(newCard);
