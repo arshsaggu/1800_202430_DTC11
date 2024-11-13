@@ -49,6 +49,11 @@
     .card {
         box-shadow: 5px 10px gainsboro;
     }
+
+    .accordion-body {
+        visibility: visible;
+    }
+
 </style>
 
 <body class="bg-orange-100" id="tuple1">
@@ -73,91 +78,88 @@
                         Some quick example text to build on the card title and make up the
                         bulk of the card's content.
                     </p>
-                        <div class="mt-4"></div>
-                        <button
-                            class="view-btn text-sm py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out"
-                            style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-                            Read More
-                        </button>
-                        <button
-                            class="order-btn text-sm py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out ml-4"
-                            style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-                           Order Now
-                        </button>
-                        </div>
-
-
+                    <div class="mt-4"></div>
+                    <button
+                        class="view-btn text-sm py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out"
+                        style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                        Read More
+                    </button>
+                    <button
+                        class="order-btn text-sm py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out ml-4"
+                        style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                        Order Now
+                    </button>
                 </div>
+
+
             </div>
-        </template>
+    </div>
+    </template>
 
-
-
-
-        <div class="container" id="tuple1">
-            <h1 class="text-center mb-8 text-4xl ml-2 p-2"><u>Popular Food Items</u>
-                <hr>
-            </h1>
-
-            <div class="container">
-                <div id="foodItems-go-here" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-                </div>
-            </div>
-        </div>
-
-
-        <div class="text-center text-2xl mb-4 mt-20" id="tuple1"><u>Frequently Asked Questions</u>
+    <div class="container" id="tuple1">
+        <h1 class="text-center mb-8 text-4xl ml-2 p-2"><u>Popular Food Items</u>
             <hr>
+        </h1>
+
+        <div class="container">
+            <div id="foodItems-go-here" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+            </div>
         </div>
+    </div>
 
-        <div id="tuple1">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            How do I place an order on HomeBites?
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                        </div>
+
+    <div class="text-center text-2xl mb-4 mt-20" id="tuple1"><u>Frequently Asked Questions</u>
+        <hr>
+    </div>
+
+    <div id="tuple1">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        How do I place an order on HomeBites?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">Login, Browse meals, select your dish, and click order now.
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Can I customize my meal order?
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Can I customize my meal order?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">Yes, you can adjust ingredients, portion sizes, and dietary preferences.
 
-                        </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            How are meal prices determined?
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        How are meal prices determined?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">Prices are set by providers based on ingredients, preparation, and customizations.
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
-        <script src="./scripts/firebaseAPI_DTC11.js"></script>
-        <script src="./scripts/skeleton.js"></script>
-        <script src="./scripts/main.js"></script>
+    <script src="./scripts/firebaseAPI_DTC11.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
 </body>
 
 </html>
