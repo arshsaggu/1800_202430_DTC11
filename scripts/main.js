@@ -149,18 +149,38 @@ function displayFoodCardsDynamically(collection) {
         });
 }
 
-// Function to show the confirmation dialog
 function showConfirmationDialog(title, price) {
+    // Get the current user ID from Firebase Authentication
+    const userId = firebase.auth().currentUser.uid;
+
     // Display the confirmation dialog
     let userConfirmed = window.confirm(`Are you sure you want to order "${title}" for $${price}?`);
 
     if (userConfirmed) {
-        alert("Order successfully placed!");  // Show success message
-    } else {
+        // Show success message
+        alert("Order successfully placed!");
 
-        alert("Order canceled.");  // Show cancellation message
+        // Reference to the user's "orders" collection
+        const orderRef = db.collection("orders").doc(userId).collection("userOrders");
+
+        // Add the order to the Firestore collection
+        orderRef.add({
+            title: title,
+            price: price,
+            status: "pending",  // Order status (can be "pending", "completed", etc.)
+            orderTime: firebase.firestore.FieldValue.serverTimestamp()  // Timestamp of order
+        }).then(() => {
+            console.log("Order added to Firestore successfully.");
+        }).catch(error => {
+            console.error("Error placing order: ", error);
+            alert("Failed to place order. Please try again.");
+        });
+    } else {
+        // If the user cancels the order
+        alert("Order canceled.");
     }
 }
+
 displayFoodCardsDynamically("foodItems");
 
 
