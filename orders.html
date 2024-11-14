@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeBites</title>
     <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -23,40 +23,36 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <script src="./scripts/firebaseAPI_DTC11.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/main.js"></script>
     <link rel="stylesheet" href="style.css">
     <!-- <script src="./scripts/script.js"></script> -->
     <!-- <script src="./scripts/authentication.js"></script> -->
 </head>
 
-    <style>
-        
-        .card {
-            height: 400px;
-        }
+<style>
+    .card {
+        height: 400px;
+    }
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
 
-        .card-body {
-            height: 200px;
-        }
+    .card-body {
+        height: 200px;
+    }
 
-        .navbar-icon {
-            width: 40px;
-            height: 40px;
-            vertical-align: middle;
-        }
+    .navbar-icon {
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+    }
 
-        .navbar-text {
-            display: flex;
-            align-items: center;
-        }
-    </style>
+    .navbar-text {
+        display: flex;
+        align-items: center;
+    }
+</style>
 
 <body class="bg-orange-100" id="tuple1">
     <nav id="navbarPlaceholder"></nav>
@@ -64,24 +60,12 @@
         <h1 class="text-center text-3xl mb-3 font-bold"><u>Orders</u></h1>
 
         <h2 class="text-center text-lg mb-3 font-bold">Current Order</h2>
-        <div class="row mb-4">
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="./images/mediterranean-feast.jpg" class="card-img-top p-2" alt="Current Order">
-                    <div class="card-body">
-                        <h5 class="card-title text-xl font-bold">Order #1234</h5>
-                        <p class="card-text">Status: Preparing</p>
-                        <p class="card-text">Estimated delivery: 30 mins</p>
-                        <a href="track_order.html" class="rounded bg-orange-500 p-2 mt-3 d-inline-block">Track</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        
+        <div class="row mb-4" id="currentOrderSection"></div>
 
         <h2 class="text-center text-lg mb-3 font-bold">Past Orders</h2>
         <div class="row">
-           
+
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <img src="./images/Antipasto-chickpea-salad_8.jpg" class="card-img-top p-2" alt="Past Order 1">
@@ -128,7 +112,11 @@
     <footer class="bg-orange-500 text-white text-center p-3 mt-5">
         <p>&copy; 2024 HomeBites. All rights reserved.</p>
     </footer>
-
+    <script src="./scripts/firebaseAPI_DTC11.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/main.js" ></script>
+    <script src="./scripts/currentOrders.js" ></script>
 </body>
 
 </html>
