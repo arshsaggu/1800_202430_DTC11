@@ -20,10 +20,9 @@ document.getElementById('review-form').addEventListener('submit', (e) => {
     e.preventDefault();
 
     const params = new URL(window.location.href);
-    const chefID = params.searchParams.get("chefID");
+    const chefID = params.searchParams.get("docID");
 
     const reviewData = {
-        chefID: chefID,
         title: document.getElementById('title').value,
         text: document.getElementById('review-text').value,
         rating: rating,
@@ -32,9 +31,13 @@ document.getElementById('review-form').addEventListener('submit', (e) => {
         userName: firebase.auth().currentUser.displayName || "Anonymous"
     };
 
-    db.collection("reviews").add(reviewData)
+    // Store review in the chef's reviews subcollection
+    db.collection("localchefs")
+        .doc(chefID)
+        .collection("reviews")
+        .add(reviewData)
         .then(() => {
-            window.location.href = `reviews.html?chefID=${chefID}`;
+            window.location.href = `eachLocalChef.html?docID=${chefID}`;
         })
         .catch((error) => {
             console.error("Error adding review: ", error);
