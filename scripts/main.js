@@ -149,9 +149,16 @@ function displayFoodCardsDynamically(collection) {
         });
 }
 
+// Function to show confirmation dialog, place an order in Firestore, and retrieve user ID
 function showConfirmationDialog(title, price) {
-    // Get the current user ID from Firebase Authentication
-    const userId = firebase.auth().currentUser.uid;
+    
+    const user = firebase.auth().currentUser;
+    if (!user) {
+        alert("User not logged in.");
+        return; 
+    }
+
+    const userId = user.uid; 
 
     // Display the confirmation dialog
     let userConfirmed = window.confirm(`Are you sure you want to order "${title}" for $${price}?`);
@@ -160,26 +167,30 @@ function showConfirmationDialog(title, price) {
         // Show success message
         alert("Order successfully placed!");
 
-        // Reference to the user's "orders" collection
+        
         const orderRef = db.collection("orders").doc(userId).collection("userOrders");
 
-        // Add the order to the Firestore collection
+        // Add the order to Firestore
         orderRef.add({
             title: title,
             price: price,
-            status: "pending",  // Order status (can be "pending", "completed", etc.)
-            orderTime: firebase.firestore.FieldValue.serverTimestamp()  // Timestamp of order
-        }).then(() => {
-            console.log("Order added to Firestore successfully.");
-        }).catch(error => {
-            console.error("Error placing order: ", error);
-            alert("Failed to place order. Please try again.");
-        });
+            status: "pending",  
+            orderTime: firebase.firestore.FieldValue.serverTimestamp(),  
+            
+        })
+            .then(() => {
+                console.log("Order added to Firestore successfully.");
+            })
+            .catch(error => {
+                console.error("Error placing order: ", error);
+                alert("Failed to place order. Please try again.");
+            });
     } else {
         // If the user cancels the order
         alert("Order canceled.");
     }
 }
+
 
 displayFoodCardsDynamically("foodItems");
 
