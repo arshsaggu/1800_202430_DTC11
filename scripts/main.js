@@ -516,3 +516,4 @@ function displayRestaurantCardsDynamically(collection) {
 
 // Call the function to display food items
 displayRestaurantCardsDynamically("localchefs");
+
