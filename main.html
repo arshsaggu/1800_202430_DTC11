@@ -54,10 +54,10 @@
         visibility: visible;
     }
 
-
+    
 </style>
 
-<body class="bg-orange-100" id="tuple1">
+<body class="bg-orange-100 overflow-x-hidden" id="tuple1">
     <nav id="navbarPlaceholder"></nav>
 
 
@@ -101,65 +101,72 @@
         <h1 class="text-center mb-8 text-4xl ml-2 p-2">Popular Food Items
             <hr>
         </h1>
+        <div>
+            <div class="container">
+                <div id="foodItems-go-here" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                </div>
+            </div>
+        </div>
 
-        <div class="container">
-            <div id="foodItems-go-here" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+
+        <div class="text-center text-2xl mb-4 mt-20" id="tuple1">Frequently Asked Questions
+            <hr>
+        </div>
+        <div class="ml-36 mr-36">
+            <div id="tuple1">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button text-xl" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                How do I place an order on HomeBites?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">Login, Browse meals, select your dish, and click order now.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-xl" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Can I customize my meal order?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">Yes, you can adjust ingredients, portion sizes, and dietary
+                                preferences.
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-xl" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How are meal prices determined?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">Prices are set by providers based on ingredients, preparation,
+                                and
+                                customizations.
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+<footer class="bg-orange-500 text-white text-center p-3 mt-5 w-screen mx-[-1rem] mb-[-2rem]">
+    <p class="m-0">&copy; 2024 HomeBites. All rights reserved.</p>
+</footer>
 
-    <div class="text-center text-2xl mb-4 mt-20" id="tuple1">Frequently Asked Questions
-        <hr>
-    </div>
 
-    <div id="tuple1">
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button text-xl" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        How do I place an order on HomeBites?
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">Login, Browse meals, select your dish, and click order now.
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed text-xl" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Can I customize my meal order?
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">Yes, you can adjust ingredients, portion sizes, and dietary preferences.
-
-                    </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed text-xl" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        How are meal prices determined?
-                    </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">Prices are set by providers based on ingredients, preparation, and
-                        customizations.
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!-- 
-    <footer class="bg-orange-500 text-white text-center p-3 mt-5">
-        <p>&copy; 2024 HomeBites. All rights reserved.</p>
-    </footer> -->
 
     <script src="./scripts/firebaseAPI_DTC11.js"></script>
     <script src="./scripts/skeleton.js"></script>
