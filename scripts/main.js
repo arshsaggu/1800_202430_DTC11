@@ -1,3 +1,4 @@
+
 function getNameFromAuth() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if a user is signed in:
@@ -19,10 +20,21 @@ function getNameFromAuth() {
         } else {
             // No user is signed in.
             console.log("No user is logged in");
+            window.location.href = "./login.html"
         }
     });
 }
 getNameFromAuth(); //run the function
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        console.log("User is logged in:", user.email);
+        document.getElementById("name-goes-here").innerText = user.displayName || "Guest"; // Display user name or "Guest" if name is unavailable
+    } else {
+        console.log("No user is logged in. Redirecting to login page...");
+        window.location.href = "./login.html"; // Redirect to the login page
+    }
+});
 
 
 // Function to get the current day of the week as a string (e.g., "monday", "tuesday")
