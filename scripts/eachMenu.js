@@ -39,7 +39,7 @@ function displayRestaurantMenu() {
                         // Add content to the menu item card
                         menuItemCard.innerHTML = `
                             <img src="../images/${menuItemCode}.jpg" alt="${menuItemName}" class="menu-item-image">
-                            <h2 class = "mt-2 text-xl">${menuItemName}</h3>
+                            <h2 class = "mt-2 mb-2 text-2xl">${menuItemName}</h3>
                             <p>${menuItemDescription}</p>
                             <p>Price: $${menuItemPrice}</p>
                             <button

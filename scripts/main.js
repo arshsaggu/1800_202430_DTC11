@@ -140,7 +140,7 @@ function displayFoodCardsDynamically(collection) {
                 // Update the content dynamically
                 newCard.querySelector('.card-title').innerHTML = title;
                 newCard.querySelector('.card-text').innerHTML = description;
-                newCard.querySelector('.card-price').innerHTML = "$ " + price;
+                newCard.querySelector('.card-price').innerHTML = "Price: $" + price;
                 newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`;
                 newCard.querySelector('.view-btn').addEventListener('click', function (event) {
                     event.preventDefault(); // Prevents the default navigation behavior
