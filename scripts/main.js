@@ -64,6 +64,36 @@ function readQuote() {
 }
 readQuote();        //calling the function
 
+function getTimeOfDay() {
+    const hour = new Date().getHours();  // Get the current hour (0 - 23)
+
+    if (hour >= 5 && hour < 12) {
+        return "morning,";  // Morning is from 5 AM to 11:59 AM
+    } else if (hour >= 12 && hour < 18) {
+        return "afternoon,";  // Afternoon is from 12 PM to 5:59 PM
+    } else {
+        return "night,";  // Night is from 6 PM to 4:59 AM
+    }
+}
+
+function updateGreeting() {
+    const timeOfDay = getTimeOfDay();  // Get the current time of day (morning, afternoon, night)
+    const greetingElement = document.getElementById("time-of-the-day");
+    const nameElement = document.getElementById("name-goes-here");
+
+    // Update the greeting text
+    greetingElement.innerHTML = timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1);  // Capitalize the first letter
+
+    // Optionally, set a name dynamically if you have it in your app's logic
+    // For now, you can replace 'User' with any variable or static text
+    nameElement.innerHTML = "User";  // Replace "User" with actual user name if available
+}
+
+// Call the updateGreeting function when the page loads
+window.onload = updateGreeting;
+
+
+
 function writeFoodItems() {
     var foodRef = db.collection("foodItems");
 
