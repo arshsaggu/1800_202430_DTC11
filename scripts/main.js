@@ -1,4 +1,3 @@
-
 function getNameFromAuth() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if a user is signed in:
@@ -194,14 +193,14 @@ function displayFoodCardsDynamically(collection) {
 
 // Function to show confirmation dialog, place an order in Firestore, and retrieve user ID
 function showConfirmationDialog(title, price) {
-    
+
     const user = firebase.auth().currentUser;
     if (!user) {
         alert("User not logged in.");
-        return; 
+        return;
     }
 
-    const userId = user.uid; 
+    const userId = user.uid;
 
     // Display the confirmation dialog
     let userConfirmed = window.confirm(`Are you sure you want to order "${title}" for $${price}?`);
@@ -210,16 +209,16 @@ function showConfirmationDialog(title, price) {
         // Show success message
         alert("Order successfully placed!");
 
-        
+
         const orderRef = db.collection("orders").doc(userId).collection("userOrders");
 
         // Add the order to Firestore
         orderRef.add({
             title: title,
             price: price,
-            status: "pending",  
-            orderTime: firebase.firestore.FieldValue.serverTimestamp(),  
-            
+            status: "pending",
+            orderTime: firebase.firestore.FieldValue.serverTimestamp(),
+
         })
             .then(() => {
                 console.log("Order added to Firestore successfully.");
@@ -534,7 +533,7 @@ function displayRestaurantCardsDynamically(collection) {
                 var description = doc.data().description;  // Get the value of the "description" key
                 var foodCode = doc.data().code;    // Get unique code for food items
                 var price = doc.data().price;      // Get the price of the food item
-                var docID = doc.id;                // Get the document ID
+                var docID = doc.id;      // Get the document ID
                 let newCard = cardTemplate.content.cloneNode(true); // Clone the HTML template for a new card
                 // Update the title, description, price, and image
                 newCard.querySelector('.card-title').innerHTML = title;
