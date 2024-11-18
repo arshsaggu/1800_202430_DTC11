@@ -222,12 +222,25 @@ function showConfirmationDialog(title, price) {
         })
             .then(() => {
                 console.log("Order added to Firestore successfully.");
+
+
+                let viewOrder = window.confirm(`Would you like to view your order`);
+
+                if (viewOrder) {
+
+                    window.location.href = "orders.html"
+                }
+
+
+
             })
+
             .catch(error => {
                 console.error("Error placing order: ", error);
                 alert("Failed to place order. Please try again.");
             });
-    } else {
+    }
+    else {
         // If the user cancels the order
         alert("Order canceled.");
     }
