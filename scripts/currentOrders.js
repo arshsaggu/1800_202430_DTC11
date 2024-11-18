@@ -20,6 +20,7 @@ function CurrentOrder() {
                     const status = orderData.status;
                     const orderTime = orderData.orderTime.toDate().toLocaleString(); 
                     const totalPrice = orderData.price;
+                    const orderImg = orderData.foodCode
                     const title = orderData.title;
                     
 
@@ -27,7 +28,7 @@ function CurrentOrder() {
                     const orderCard = `
                         <div class="col-md-4 mb-4">
                             <div class="card">
-                                <img src="./images/mediterranean-feast.jpg" class="card-img-top p-2" alt="Current Order">
+                                <img src="./images/${orderImg}.jpg" class="card-img-top p-2" alt="Current Order">
                                 <div class="card-body">
                                     <h5 class="card-title text-xl font-bold">${title}</h5>
                                     <p class="card-text">Status: ${status}</p>
