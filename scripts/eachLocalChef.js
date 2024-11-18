@@ -59,9 +59,11 @@ function displayChefReviews() {
                             <div class="text-gray-500 text-right">
                                 <div>${review.timestamp ? new Date(review.timestamp.toDate()).toLocaleDateString() : ''}</div>
                                 ${isCurrentUserReview ? `
-                                    <button class="text-red-500 hover:text-red-700 font-bold text-xl mt-1" 
-                                            onclick="deleteReview('${doc.id}')">
-                                        🗑️
+                                    <button 
+                                        onclick="deleteReview('${doc.id}')"
+                                        class="text-md font-thin py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out"
+                                        style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                                        Delete
                                     </button>
                                 ` : ''}
                             </div>
