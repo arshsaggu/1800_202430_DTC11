@@ -178,7 +178,7 @@ function displayFoodCardsDynamically(collection) {
 
                 newCard.querySelector('.order-btn').addEventListener('click', function (event) {
                     event.preventDefault(); // Prevent the default action (e.g., navigating if href is used)
-                    showConfirmationDialog(title, price); // Show the confirmation dialog
+                    showConfirmationDialog(title, price, foodCode); // Show the confirmation dialog
                 });
 
                 // Append the new card to the container
@@ -192,7 +192,7 @@ function displayFoodCardsDynamically(collection) {
 }
 
 // Function to show confirmation dialog, place an order in Firestore, and retrieve user ID
-function showConfirmationDialog(title, price) {
+function showConfirmationDialog(title, price, foodCode) {
 
     const user = firebase.auth().currentUser;
     if (!user) {
@@ -216,6 +216,7 @@ function showConfirmationDialog(title, price) {
         orderRef.add({
             title: title,
             price: price,
+            foodCode: foodCode,
             status: "pending",
             orderTime: firebase.firestore.FieldValue.serverTimestamp(),
 
