@@ -2,33 +2,27 @@ function CurrentOrder() {
     // Listen to the auth state change (This will be triggered when the page loads)
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
-           
+
             alert("User not logged in.");
             return; // Abort the function if the user is not logged in
         }
 
-
-
-        
-
-
-
-        const userId = user.uid; 
+        const userId = user.uid;
         // Reference to the user's 'userOrders' sub-collection
         const orderRef = db.collection("orders").doc(userId).collection("userOrders");
 
         orderRef.orderBy("orderTime", "desc").limit(1).get()
             .then(snapshot => {
                 if (!snapshot.empty) {
-               
+
                     const orderData = snapshot.docs[0].data();
-                    const orderId = snapshot.docs[0].id; 
+                    const orderId = snapshot.docs[0].id;
                     const status = orderData.status;
-                    const orderTime = orderData.orderTime.toDate().toLocaleString(); 
+                    const orderTime = orderData.orderTime.toDate().toLocaleString();
                     const totalPrice = orderData.price;
                     const orderImg = orderData.foodCode
                     const title = orderData.title;
-                    
+
 
                     // Create the current order card dynamically
                     const orderCard = `
@@ -46,11 +40,18 @@ function CurrentOrder() {
                             </div>
                         </div>
                     `;
-
-                    
                     document.getElementById("currentOrderSection").innerHTML = orderCard;
+
+                    // Now, we can query the confirm button because the card is added to the DOM
+                    const confirmButton = document.querySelector(".confirm-btn");
+                    if (confirmButton) {
+                        confirmButton.addEventListener("click", () => {
+                            confirmOrder(orderId);
+                        });
+                    }
+
                 } else {
-                   
+
                     document.getElementById("currentOrderSection").innerHTML = `
                         <div class="col-md-4 mb-4">
                             <div class="card">
@@ -69,9 +70,60 @@ function CurrentOrder() {
             });
     });
 }
+function confirmOrder(orderId) {
+    const user = firebase.auth().currentUser;
+    if (!user) {
+        alert("User not logged in.");
+        return;
+    }
+
+    const userId = user.uid;
+
+    // Display the confirmation dialog
+    let userConfirmed = window.confirm(`Please confirm that your order has been delivered`);
+
+    if (userConfirmed) {
+        // Show success message
+        alert("Order successfully delivered!");
+
+        // Reference to the current order document using orderId
+        const orderRef = db.collection("orders").doc(userId).collection("userOrders").doc(orderId); // Correct way to get a specific document
+
+        // Fetch the specific order document
+        orderRef.get().then(doc => {
+            if (doc.exists) {
+                const orderData = doc.data();
+
+                // Add the order data to the "pastOrders" collection
+                const pastOrderRef = db.collection("orders").doc(userId).collection("pastOrders").doc(orderId);
+
+                // Move the order to pastOrders
+                pastOrderRef.set(orderData).then(() => {
+                    // Now delete the order from current orders collection
+                    orderRef.delete().then(() => {
+
+                        document.getElementById("currentOrderSection").innerHTML = `
+                            
+                        `;
+                    }).catch(error => {
+                        console.error("Error removing current order: ", error);
+                        alert("Failed to remove current order.");
+                    });
+                }).catch(error => {
+                    console.error("Error adding to past orders: ", error);
+                    alert("Failed to move to past orders.");
+                });
+
+
+            }
+        })
+    }
+}
+
+
 
 // Wait for the DOM content to load before initializing
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     CurrentOrder();
 });
