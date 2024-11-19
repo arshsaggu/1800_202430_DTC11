@@ -57,6 +57,27 @@
         display: flex;
         align-items: center;
     }
+ 
+    .star {
+        font-size: 24px;
+        cursor: pointer;
+        color: #FFA500;
+    }
+
+    .star:hover {
+        color: #FF8C00;
+    }
+
+    .navbar-icon {
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+    }
+
+    .navbar-text {
+        display: flex;
+        align-items: center;
+    }
 </style>
 
 <body class="bg-orange-100" id="tuple1">
@@ -84,7 +105,42 @@
 
         </div>
     </div>
+<div class="container mt-5">
+    <h1 class="text-center text-3xl mb-4 font-bold"><u>Add Your Review</u></h1>
 
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4 shadow-lg">
+                <form id="review-form">
+                    <div class="mb-3">
+                        <label for="title" class="form-label font-bold">Review Title</label>
+                        <input type="text" class="form-control" id="title" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label font-bold">Rating</label>
+                        <div class="star-rating">
+                            <span class="star" id="star1">☆</span>
+                            <span class="star" id="star2">☆</span>
+                            <span class="star" id="star3">☆</span>
+                            <span class="star" id="star4">☆</span>
+                            <span class="star" id="star5">☆</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="review-text" class="form-label font-bold">Your Review</label>
+                        <textarea class="form-control" id="review-text" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded w-full">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="container mt-5">
         <h2 class="text-3xl text-center mb-4">Reviews</h2>
         <div id="reviews-section" class="space-y-4">
@@ -92,6 +148,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <script>
         // Get the chefId from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
@@ -103,6 +160,8 @@
         }
     </script>
 
+=======
+>>>>>>> 65383acdf4124b83ec1b671d24441d5fd56f9eea
     <footer class="bg-orange-500 text-white text-center p-3 mt-5">
         <p>&copy; 2024 HomeBites. All rights reserved.</p>
     </footer>
@@ -111,6 +170,8 @@
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/eachLocalChef.js"></script>
+    <script src="./scripts/add-review.js"></script>
+
     <!-- <script src="./scripts/main.js"></script> -->
 
 </body>
