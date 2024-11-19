@@ -79,11 +79,11 @@ function confirmOrder(orderId) {
 
     const userId = user.uid;
 
-    // Display the confirmation dialog
+    
     let userConfirmed = window.confirm(`Please confirm that your order has been delivered`);
 
     if (userConfirmed) {
-        // Show success message
+        
         alert("Order successfully delivered!");
 
         // Reference to the current order document using orderId
@@ -103,6 +103,7 @@ function confirmOrder(orderId) {
                     orderRef.delete().then(() => {
 
                         document.getElementById("currentOrderSection").innerHTML = `
+                        <h2 class="text-center">You have no current orders.<h2/>
                             
                         `;
                     }).catch(error => {
@@ -120,6 +121,16 @@ function confirmOrder(orderId) {
     }
 }
 
+function fetchPastOrders() {
+    const user = firebase.auth().currentUser;
+    if (!user) {
+        alert("User not logged in.");
+        return;
+    }
+
+    const userId = user.uid;
+    const pastOrderRef = db.collection("orders").doc(userId).collection("pastOrders");
+}
 
 
 // Wait for the DOM content to load before initializing
