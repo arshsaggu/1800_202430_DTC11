@@ -114,28 +114,28 @@ function confirmOrder(orderId) {
 
 // Function to fetch and display past orders
 function PastOrders() {
-    const user = firebase.auth().currentUser;
-    if (!user) {
-        alert("User not logged in.");
-        return;
-    }
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (!user) {
+            alert("User not logged in.");
+            return; // Abort the function if the user is not logged in
+        }
 
-    const userId = user.uid;
-    const pastOrderRef = db.collection("orders").doc(userId).collection("pastOrders");
-    pastOrderRef.orderBy("orderTime", "desc").limit(1).get()
-        .then(snapshot => {
-        let pastOrdersHTML = '';
+        const userId = user.uid;
+        const pastOrderRef = db.collection("orders").doc(userId).collection("pastOrders");
+        pastOrderRef.orderBy("orderTime", "desc").limit(3).get()
+            .then(snapshot => {
+                let pastOrdersHTML = '';
 
-        snapshot.forEach(doc => {
-            const orderData = doc.data();
-            const orderId = doc.id;
-            const title = orderData.title;
-            const status = orderData.status;
-            const orderImg = orderData.foodCode;
-            const orderTime = orderData.orderTime.toDate().toLocaleString();
-            const totalPrice = orderData.price;
+                snapshot.forEach(doc => {
+                    const orderData = doc.data();
+                    const orderId = doc.id;
+                    const title = orderData.title;
+                    const status = orderData.status;
+                    const orderImg = orderData.foodCode;
+                    const orderTime = orderData.orderTime.toDate().toLocaleString();
+                    const totalPrice = orderData.price;
 
-            pastOrdersHTML += `
+                    pastOrdersHTML += `
                 <div class="col-md-4 mb-4">
                             <div class="card">
                                 <img src="./images/${orderImg}.jpg" class="card-img-top p-2" alt="Current Order">
@@ -149,17 +149,20 @@ function PastOrders() {
                             </div>
                         </div>
             `;
-        });
 
-        // Insert past orders into the pastOrdersSection
-        document.getElementById("pastOrdersSection").innerHTML = pastOrdersHTML;
-    }).catch(error => {
-        console.error("Error fetching past orders: ", error);
-        alert("Failed to fetch past orders.");
-    });
+                });
+
+                // Insert past orders into the pastOrdersSection
+                document.getElementById("pastOrdersSection").innerHTML = pastOrdersHTML;
+            }).catch(error => {
+                console.error("Error fetching past orders: ", error);
+                alert("Failed to fetch past orders.");
+            });
+    }
+    )
 }
-
 // Wait for the DOM content to load before initializing
 document.addEventListener('DOMContentLoaded', function () {
     CurrentOrder();
+    PastOrders();
 });
