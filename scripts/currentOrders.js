@@ -7,6 +7,12 @@ function CurrentOrder() {
             return; // Abort the function if the user is not logged in
         }
 
+
+
+        
+
+
+
         const userId = user.uid; 
         // Reference to the user's 'userOrders' sub-collection
         const orderRef = db.collection("orders").doc(userId).collection("userOrders");
@@ -34,7 +40,8 @@ function CurrentOrder() {
                                     <p class="card-text">Status: ${status}</p>
                                     <p class="card-text">Estimated delivery: ${orderTime}</p>
                                     <p class="card-text">Total Price: $${totalPrice}</p>
-                                    <a href="track_order.html?orderId=${orderId}" class="rounded bg-orange-500 p-2 mt-3 d-inline-block">Track</a>
+                                     <button class="confirm-btn mt-4 text-sm  py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out ml-4"
+                        style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">Confirm Delivery</button>
                                 </div>
                             </div>
                         </div>
