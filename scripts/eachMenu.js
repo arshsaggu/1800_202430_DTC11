@@ -4,7 +4,7 @@ function manageRestaurantAndSearch() {
     const query = document.getElementById("searchInput")?.value.toLowerCase().trim(); // Get and trim the search query
     const resultsDiv = document.getElementById("searchResults");
 
-    function handleOrder(menuItemName, menuItemPrice) {
+    function handleOrder(menuItemName, menuItemPrice, menuItemCode) {
         const user = firebase.auth().currentUser;
 
         if (!user) {
@@ -25,6 +25,7 @@ function manageRestaurantAndSearch() {
                 title: menuItemName,
                 price: menuItemPrice,
                 status: "pending",
+                foodCode: menuItemCode, 
                 orderTime: firebase.firestore.FieldValue.serverTimestamp(),
             })
                 .then(() => {
@@ -88,7 +89,7 @@ function manageRestaurantAndSearch() {
                         style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">Order Now</button>
                     `;
                     menuItemCard.querySelector(".order-btn").addEventListener("click", () => {
-                        handleOrder(menuItemName, menuItemPrice);
+                        handleOrder(menuItemName, menuItemPrice, menuItemCode);
                     });
                     document.getElementById("menuItemsContainer").appendChild(menuItemCard);
                 });
