@@ -45,13 +45,25 @@
     }
 </style>
 
-<body class="bg-orange-100" id="tuple1">
+<body class="bg-orange-100 flex flex-col min-h-screen" id="tuple1">
     <nav id="navbarPlaceholder"></nav>
 
-    <div class="container mb-16">
-
+    <div class="container mb-16 flex-grow">
+        <!-- Your main content goes here -->
     </div>
-    <div id="firebaseui-auth-container"></div>
+
+    <!-- Login container placed with absolute positioning -->
+    <div id="firebaseui-auth-container" class="absolute top-28 left-0 right-0 mt-10">
+        <!-- Your login UI goes here -->
+    </div>
+
     <div id="loader"></div>
+
+    <!-- Footer -->
+    <footer class="bg-orange-500 text-lg text-white text-center p-3 mt-5">
+        <p>&copy; 2024 HomeBites. All rights reserved.</p>
+    </footer>
+
+</body>
 
 </html>
