@@ -1,7 +1,7 @@
 function manageRestaurantAndSearch() {
     const params = new URL(window.location.href).searchParams;
-    const docID = params.get("docID"); // Get the "docID" parameter from the URL
-    const query = document.getElementById("searchInput")?.value.toLowerCase().trim(); // Get and trim the search query
+    const docID = params.get("docID");
+    const query = document.getElementById("searchInput")?.value.toLowerCase().trim();
     const resultsDiv = document.getElementById("searchResults");
 
     function handleOrder(menuItemName, menuItemPrice, menuItemCode) {
@@ -12,8 +12,7 @@ function manageRestaurantAndSearch() {
             return;
         }
 
-        const userId = user.uid; // Retrieve the user's unique ID
-
+        const userId = user.uid;
         const userConfirmed = window.confirm(`Are you sure you want to order "${menuItemName}" for $${menuItemPrice}?`);
 
         if (userConfirmed) {
@@ -25,7 +24,7 @@ function manageRestaurantAndSearch() {
                 title: menuItemName,
                 price: menuItemPrice,
                 status: "pending",
-                foodCode: menuItemCode, 
+                foodCode: menuItemCode,
                 orderTime: firebase.firestore.FieldValue.serverTimestamp(),
             })
                 .then(() => {
@@ -34,8 +33,7 @@ function manageRestaurantAndSearch() {
                     let viewOrder = window.confirm(`Would you like to view your order`);
 
                     if (viewOrder) {
-
-                        window.location.href = "orders.html"
+                        window.location.href = "orders.html";
                     }
                 })
                 .catch(error => {
@@ -47,7 +45,6 @@ function manageRestaurantAndSearch() {
         }
     }
 
-    // If a docID exists in the URL, display the restaurant menu
     if (docID) {
         console.log("Displaying restaurant menu for ID:", docID);
 
@@ -61,12 +58,10 @@ function manageRestaurantAndSearch() {
                 const restaurantCuisine = thisRestaurant.cuisine;
                 const restaurantCode = thisRestaurant.code;
 
-                // Update the HTML with restaurant info
                 document.getElementById("menuName").innerHTML = restaurantName;
                 document.getElementById("menuDescription").innerHTML = restaurantDescription;
                 document.querySelector(".menuName-img").src = "../images/" + restaurantCode + ".jpg";
 
-                // Fetch and display menu items
                 return doc.ref.collection("menuItems").get();
             })
             .then(menuItems => {
@@ -77,7 +72,6 @@ function manageRestaurantAndSearch() {
                     const menuItemPrice = menuItemData.price;
                     const menuItemCode = menuItemData.code;
 
-                    // Create and append menu item card
                     const menuItemCard = document.createElement("div");
                     menuItemCard.classList.add("menu-item-card");
                     menuItemCard.innerHTML = `
@@ -96,54 +90,57 @@ function manageRestaurantAndSearch() {
             })
             .catch(error => console.error("Error fetching restaurant data: ", error));
     }
-
-    // If a search query is provided, perform the search
     else if (query) {
         console.log("Searching chefs and menu items for query:", query);
-        resultsDiv.innerHTML = ""; // Clear previous search results
+        resultsDiv.innerHTML = "";
+
+        if (!query) {
+            resultsDiv.innerHTML = "<p>Please enter a search query.</p>";
+            return;
+        }
+
+        let searchResults = new Map();
 
         db.collection("localchefs").get()
-            .then(allChefs => {
-                const promises = [];
-
-                allChefs.forEach(doc => {
+            .then(async allChefs => {
+                for (const doc of allChefs.docs) {
                     const chef = doc.data();
                     const chefId = doc.id;
 
-                    const menuItemsPromise = doc.ref.collection("menuItems").get()
-                        .then(menuItemsSnapshot => {
-                            const matchingDishes = [];
+                    const menuItemsSnapshot = await doc.ref.collection("menuItems").get();
+                    const matchingDishes = [];
 
-                            menuItemsSnapshot.forEach(menuItemDoc => {
-                                const dish = menuItemDoc.data();
-                                if (dish.name.toLowerCase().startsWith(query)) {
-                                    matchingDishes.push({
-                                        name: dish.name,
-                                        description: dish.description,
-                                        price: dish.price,
-                                    });
-                                }
+                    menuItemsSnapshot.forEach(menuItemDoc => {
+                        const dish = menuItemDoc.data();
+                        // Only match items that start with the search query
+                        if (dish.name.toLowerCase().startsWith(query)) {
+                            matchingDishes.push({
+                                name: dish.name,
+                                description: dish.description,
+                                price: dish.price,
                             });
+                        }
+                    });
 
-                            return matchingDishes.length > 0
-                                ? { id: chefId, name: chef.name, cuisine: chef.cuisine, dishes: matchingDishes }
-                                : null;
+                    // Only add chef to results if they have matching dishes
+                    if (matchingDishes.length > 0) {
+                        searchResults.set(chefId, {
+                            id: chefId,
+                            name: chef.name,
+                            cuisine: chef.cuisine,
+                            dishes: matchingDishes
                         });
+                    }
+                }
 
-                    promises.push(menuItemsPromise);
-                });
-
-                return Promise.all(promises);
-            })
-            .then(filteredChefs => {
-                const filteredResults = filteredChefs.filter(chef => chef !== null);
-
-                if (filteredResults.length === 0) {
+                // Display results
+                if (searchResults.size === 0) {
                     resultsDiv.innerHTML = "<p>No results found</p>";
                     return;
                 }
 
-                filteredResults.forEach(chef => {
+                resultsDiv.innerHTML = ""; // Clear previous results
+                searchResults.forEach(chef => {
                     const chefCard = document.createElement("div");
                     chefCard.classList.add("chef-card", "p-4", "bg-white", "rounded-lg", "shadow-md", "mb-4");
                     chefCard.innerHTML = `
@@ -151,7 +148,7 @@ function manageRestaurantAndSearch() {
                         <p class="text-sm text-gray-500">Cuisine: ${chef.cuisine}</p>
                         <div class="mt-2">
                             ${chef.dishes.map(dish => `
-                                <div class="dish-item">
+                                <div class="dish-item border-b border-gray-200 py-2">
                                     <p class="text-lg font-semibold">${dish.name} - $${dish.price}</p>
                                     <p class="text-sm text-gray-700">${dish.description}</p>
                                 </div>
@@ -166,12 +163,19 @@ function manageRestaurantAndSearch() {
             })
             .catch(error => {
                 resultsDiv.innerHTML = `<p>Error fetching chefs: ${error.message}</p>`;
+                console.error("Search error:", error);
             });
     } else {
         console.log("No valid operation performed. Ensure either a docID or search query is provided.");
     }
 }
 
-// Call the function on page load or trigger based on user action
 document.getElementById("searchButton")?.addEventListener("click", manageRestaurantAndSearch);
 window.onload = manageRestaurantAndSearch;
+
+document.getElementById("searchInput")?.addEventListener("input", () => {
+    const query = document.getElementById("searchInput").value.trim();
+    if (!query) {
+        document.getElementById("searchResults").innerHTML = "";
+    }
+});
