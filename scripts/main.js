@@ -171,10 +171,7 @@ function displayFoodCardsDynamically(collection) {
                 newCard.querySelector('.card-text').innerHTML = description;
                 newCard.querySelector('.card-price').innerHTML = "Price: $" + price;
                 newCard.querySelector('.card-image').src = `./images/${foodCode}.jpg`;
-                newCard.querySelector('.view-btn').addEventListener('click', function (event) {
-                    event.preventDefault(); // Prevents the default navigation behavior
-                    window.location.href = "eachFoodItem.html?docID=" + docID; // Manually redirect to the page
-                });
+
 
                 newCard.querySelector('.order-btn').addEventListener('click', function (event) {
                     event.preventDefault(); // Prevent the default action (e.g., navigating if href is used)
