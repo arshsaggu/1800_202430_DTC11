@@ -204,15 +204,15 @@ function showConfirmationDialog(title, price, foodCode) {
         icon: "question",
         showCancelButton: true,
         confirmButtonColor: "#FFA726",
-        confirmButtonText: "Yes!",
-        cancelButtonText: "No!",
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
         reverseButtons: true,
     }).then((result) => {
         if (result.isConfirmed) {
             // Show delivery confirmation dialog
             swal.fire({
-                title: "Delivery Confirmed",
-                text: "Thank you, enjoy your order!",
+                title: "Order Confirmed",
+                text: "Thank you, your order has been confirmed",
                 icon: "success",
                 confirmButtonColor: "#FFA726",
                 confirmButtonText: "OK",
@@ -230,10 +230,20 @@ function showConfirmationDialog(title, price, foodCode) {
                 })
                     .then(() => {
                         console.log("Order added to Firestore successfully.");
-                        const viewOrder = window.confirm("Would you like to view your order?");
-                        if (viewOrder) {
-                            window.location.href = "orders.html";
-                        }
+                        swal.fire({
+                            title: "View Order?",
+                            text: "would you like to view your order",
+                            icon: "question",
+                            showCancelButton: true,
+                            confirmButtonText: "Yes",
+                            cancelButtonText: "No",
+                            confirmButtonColor: "#FFA726",
+                            reverseButtons: true,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "orders.html";
+                            }
+                        });
                     })
                     .catch(error => {
                         console.error("Error placing order: ", error);
