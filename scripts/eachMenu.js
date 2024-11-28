@@ -46,12 +46,20 @@ function manageRestaurantAndSearch() {
             })
                 .then(() => {
                     console.log("Order added to Firestore successfully.");
-
-                    let viewOrder = window.confirm(`Would you like to view your order`);
-
-                    if (viewOrder) {
-                        window.location.href = "orders.html";
-                    }
+                    swal.fire({
+                        title: "View Order?",
+                        text: "would you like to view your order",
+                        icon: "question",
+                        showCancelButton: true,
+                        confirmButtonText: "Yes",
+                        cancelButtonText: "No",
+                        confirmButtonColor: "#FFA726",
+                        reverseButtons: true,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "orders.html";
+                        }
+                    });
                 })
                 .catch(error => {
                     console.error("Error placing order: ", error);
