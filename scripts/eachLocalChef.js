@@ -61,7 +61,7 @@ function displayChefReviews() {
                                 ${isCurrentUserReview ? `
                                     <button 
                                         onclick="editReview('${doc.id}', '${review.title}', '${review.text}')"
-                                        class="text-md font-thin py-2 px-4 rounded-xl bg-gradient-to-b from-blue-300 to-blue-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-blue-500 transform hover:translate-y-1 transition duration-200 ease-in-out">
+                                        class="text-md font-thin py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out">
                                         Edit
                                     </button>
                                     <button 
