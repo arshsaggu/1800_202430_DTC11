@@ -13,12 +13,29 @@ function manageRestaurantAndSearch() {
         }
 
         const userId = user.uid;
-        const userConfirmed = window.confirm(`Are you sure you want to order "${menuItemName}" for $${menuItemPrice}?`);
+        swal.fire({
+            title: "Order Confirmation",
+            text: "Would you like to place an order?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#FFA726",
+            confirmButtonText: "Yes!",
+            cancelButtonText: "No!",
+            reverseButtons: true,
+       
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Show delivery confirmation dialog
+                swal.fire({
+                    title: "Delivery Confirmed",
+                    text: "Thank you, enjoy your order!",
+                    icon: "success",
+                    confirmButtonColor: "#FFA726",
+                    confirmButtonText: "OK",
+                }).then(() => {
 
-        if (userConfirmed) {
-            alert("Order successfully placed!");
+                    const orderRef = db.collection("orders").doc(userId).collection("userOrders");
 
-            const orderRef = db.collection("orders").doc(userId).collection("userOrders");
 
             orderRef.add({
                 title: menuItemName,
@@ -39,10 +56,20 @@ function manageRestaurantAndSearch() {
                 .catch(error => {
                     console.error("Error placing order: ", error);
                     alert("Failed to place order. Please try again.");
+                    alert("Failed to place order. Please try again.");
                 });
-        } else {
-            alert("Order canceled.");
-        }
+                });
+            } else {
+
+                swal.fire({
+                    title: "Order Confirmation",
+                    text: "Place an order whenever you are ready",
+                    icon: "info",
+                    confirmButtonColor: "#FFA726",
+                    confirmButtonText: "OK",
+                });
+            }
+        });
     }
 
     if (docID) {
