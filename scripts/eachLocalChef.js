@@ -60,9 +60,13 @@ function displayChefReviews() {
                                 <div>${review.timestamp ? new Date(review.timestamp.toDate()).toLocaleDateString() : ''}</div>
                                 ${isCurrentUserReview ? `
                                     <button 
+                                        onclick="editReview('${doc.id}', '${review.title}', '${review.text}')"
+                                        class="text-md font-thin py-2 px-4 rounded-xl bg-gradient-to-b from-blue-300 to-blue-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-blue-500 transform hover:translate-y-1 transition duration-200 ease-in-out">
+                                        Edit
+                                    </button>
+                                    <button 
                                         onclick="deleteReview('${doc.id}')"
-                                        class="text-md font-thin py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out"
-                                        style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                                        class="text-md font-thin py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out">
                                         Delete
                                     </button>
                                 ` : ''}
@@ -103,6 +107,33 @@ function deleteReview(reviewId) {
             console.error("Error deleting review: ", error);
             alert('Failed to delete review');
         });
+}
+
+function editReview(reviewId, currentTitle, currentText) {
+    const newTitle = prompt("Edit Review Title:", currentTitle);
+    const newText = prompt("Edit Review Text:", currentText);
+
+    if (newTitle && newText) {
+        let params = new URL(window.location.href);
+        let chefID = params.searchParams.get("docID");
+
+        db.collection("localchefs")
+            .doc(chefID)
+            .collection("reviews")
+            .doc(reviewId)
+            .update({
+                title: newTitle,
+                text: newText,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp() // Update timestamp
+            })
+            .then(() => {
+                displayChefReviews(); // Refresh the reviews display
+            })
+            .catch((error) => {
+                console.error("Error updating review: ", error);
+                alert('Failed to update review');
+            });
+    }
 }
 
 displaylocalChefInfo();
