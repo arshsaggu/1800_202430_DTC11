@@ -60,7 +60,6 @@ function CurrentOrder() {
     });
 }
 
-// Function to confirm the order and move it to past orders
 function confirmOrder(orderId) {
     const user = firebase.auth().currentUser;
     if (!user) {
@@ -71,46 +70,69 @@ function confirmOrder(orderId) {
     const userId = user.uid;
 
     // Ask the user to confirm delivery
-    let userConfirmed = window.confirm(`Please confirm that your order has been delivered`);
+    swal.fire({
+        title: "Delivery Confirmation",
+        text: "Has your order been delivered?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#FFA726",
+        confirmButtonText: "Yes!",
+        cancelButtonText: "No",
+        reverseButtons: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            
+            swal.fire({
+                title: "Delivery Confirmed",
+                text: "Thank you, enjoy your order!",
+                icon: "success",
+                confirmButtonColor: "#FFA726",
+                confirmButtonText: "OK",
+            }).then(() => {
+                
+                const orderRef = db.collection("orders").doc(userId).collection("userOrders").doc(orderId);
 
-    if (userConfirmed) {
-        alert("Order successfully delivered!");
+                orderRef.get().then(doc => {
+                    if (doc.exists) {
+                        const orderData = doc.data();
 
-        // Reference to the current order document using orderId
-        const orderRef = db.collection("orders").doc(userId).collection("userOrders").doc(orderId);
+                        // Add the order data to the "pastOrders" collection
+                        const pastOrderRef = db.collection("orders").doc(userId).collection("pastOrders").doc(orderId);
 
-        // Fetch the specific order document
-        orderRef.get().then(doc => {
-            if (doc.exists) {
-                const orderData = doc.data();
+                        pastOrderRef.set(orderData).then(() => {
+                            // Now delete the order from the current orders collection
+                            orderRef.delete().then(() => {
+                                // Update the UI for current and past orders sections
+                                document.getElementById("currentOrderSection").innerHTML = `
+                                    <h2 class="text-center">You have no current orders.</h2>
+                                `;
 
-                // Add the order data to the "pastOrders" collection
-                const pastOrderRef = db.collection("orders").doc(userId).collection("pastOrders").doc(orderId);
-
-                // Move the order to pastOrders
-                pastOrderRef.set(orderData).then(() => {
-                    // Now delete the order from current orders collection
-                    orderRef.delete().then(() => {
-                        // Update the UI for current and past orders sections
-                        document.getElementById("currentOrderSection").innerHTML = `
-                            <h2 class="text-center">You have no current orders.</h2>
-                        `;
-
-                        // Refresh the past orders section
-                        PastOrders();
-
-                    }).catch(error => {
-                        console.error("Error removing current order: ", error);
-                        alert("Failed to remove current order.");
-                    });
-                }).catch(error => {
-                    console.error("Error adding to past orders: ", error);
-                    alert("Failed to move to past orders.");
+                                // Refresh the past orders section
+                                PastOrders();
+                            }).catch(error => {
+                                console.error("Error removing current order: ", error);
+                                alert("Failed to remove current order.");
+                            });
+                        }).catch(error => {
+                            console.error("Error adding to past orders: ", error);
+                            alert("Failed to move to past orders.");
+                        });
+                    }
                 });
-            }
-        });
-    }
+            });
+        } else {
+            // If the user clicks "No", show an alert to remind them to confirm later
+            swal.fire({
+                title: "Delivery Confirmation",
+                text: "Please confirm that your order has been delivered when it arrives.",
+                icon: "info",
+                confirmButtonColor: "#FFA726",
+                confirmButtonText: "OK",
+            });
+        }
+    });
 }
+
 
 // Function to fetch and display past orders
 function PastOrders() {
