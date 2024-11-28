@@ -78,7 +78,7 @@ function confirmOrder(orderId) {
         confirmButtonColor: "#FFA726",
         confirmButtonText: "Yes",
         cancelButtonText: "No",
-        reverseButtons: true,
+     
     }).then((result) => {
         if (result.isConfirmed) {
             
