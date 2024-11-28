@@ -198,52 +198,60 @@ function showConfirmationDialog(title, price, foodCode) {
     }
 
     const userId = user.uid;
+    swal.fire({
+        title: "Order Confirmation",
+        text: "Would you like to place an order?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#FFA726",
+        confirmButtonText: "Yes!",
+        cancelButtonText: "No!",
+        reverseButtons: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Show delivery confirmation dialog
+            swal.fire({
+                title: "Delivery Confirmed",
+                text: "Thank you, enjoy your order!",
+                icon: "success",
+                confirmButtonColor: "#FFA726",
+                confirmButtonText: "OK",
+            }).then(() => {
+                
+                const orderRef = db.collection("orders").doc(userId).collection("userOrders");
 
-    // Display the confirmation dialog
-    let userConfirmed = window.confirm(`Are you sure you want to order "${title}" for $${price}?`);
-
-    if (userConfirmed) {
-        // Show success message
-        alert("Order successfully placed!");
-
-
-        const orderRef = db.collection("orders").doc(userId).collection("userOrders");
-
-        // Add the order to Firestore
-        orderRef.add({
-            title: title,
-            price: price,
-            foodCode: foodCode,
-            status: "pending",
-            orderTime: firebase.firestore.FieldValue.serverTimestamp(),
-
-        })
-            .then(() => {
-                console.log("Order added to Firestore successfully.");
-
-
-                let viewOrder = window.confirm(`Would you like to view your order`);
-
-                if (viewOrder) {
-
-                    window.location.href = "orders.html"
-                }
-
-
-
-            })
-
-            .catch(error => {
-                console.error("Error placing order: ", error);
-                alert("Failed to place order. Please try again.");
+               
+                orderRef.add({
+                    title: title,
+                    price: price,
+                    foodCode: foodCode,
+                    status: "pending",
+                    orderTime: firebase.firestore.FieldValue.serverTimestamp(),
+                })
+                    .then(() => {
+                        console.log("Order added to Firestore successfully.");
+                        const viewOrder = window.confirm("Would you like to view your order?");
+                        if (viewOrder) {
+                            window.location.href = "orders.html";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error placing order: ", error);
+                        alert("Failed to place order. Please try again.");
+                    });
             });
-    }
-    else {
-        // If the user cancels the order
-        alert("Order canceled.");
-    }
+        } else {
+           
+            swal.fire({
+                title: "Order Confirmation",
+                text: "Place an order whenever you are ready",
+                icon: "info",
+                confirmButtonColor: "#FFA726",
+                confirmButtonText: "OK",
+            });
+        }
+    });
 }
-
 
 displayFoodCardsDynamically("foodItems");
 
