@@ -19,8 +19,8 @@ function manageRestaurantAndSearch() {
             icon: "question",
             showCancelButton: true,
             confirmButtonColor: "#FFA726",
-            confirmButtonText: "Yes!",
-            cancelButtonText: "No!",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
             reverseButtons: true,
        
         }).then((result) => {
