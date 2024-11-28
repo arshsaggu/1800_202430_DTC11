@@ -77,7 +77,7 @@ function confirmOrder(orderId) {
         showCancelButton: true,
         confirmButtonColor: "#FFA726",
         confirmButtonText: "Yes!",
-        cancelButtonText: "No",
+        cancelButtonText: "No!",
         reverseButtons: true,
     }).then((result) => {
         if (result.isConfirmed) {
@@ -100,14 +100,14 @@ function confirmOrder(orderId) {
                         const pastOrderRef = db.collection("orders").doc(userId).collection("pastOrders").doc(orderId);
 
                         pastOrderRef.set(orderData).then(() => {
-                            // Now delete the order from the current orders collection
+                            
                             orderRef.delete().then(() => {
-                                // Update the UI for current and past orders sections
+                               
                                 document.getElementById("currentOrderSection").innerHTML = `
                                     <h2 class="text-center">You have no current orders.</h2>
                                 `;
 
-                                // Refresh the past orders section
+                                 
                                 PastOrders();
                             }).catch(error => {
                                 console.error("Error removing current order: ", error);
@@ -121,7 +121,6 @@ function confirmOrder(orderId) {
                 });
             });
         } else {
-            // If the user clicks "No", show an alert to remind them to confirm later
             swal.fire({
                 title: "Delivery Confirmation",
                 text: "Please confirm that your order has been delivered when it arrives.",
@@ -134,12 +133,12 @@ function confirmOrder(orderId) {
 }
 
 
-// Function to fetch and display past orders
+// Function to get past orders
 function PastOrders() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
             alert("User not logged in.");
-            return; // Abort the function if the user is not logged in
+            return; 
         }
 
         const userId = user.uid;
@@ -174,7 +173,7 @@ function PastOrders() {
 
                 });
 
-                // Insert past orders into the pastOrdersSection
+                // put the past orders into the pastOrdersSection
                 document.getElementById("pastOrdersSection").innerHTML = pastOrdersHTML;
             }).catch(error => {
                 console.error("Error fetching past orders: ", error);
