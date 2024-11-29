@@ -81,7 +81,7 @@ function updateGreeting() {
     const nameElement = document.getElementById("name-goes-here");
 
     // Update the greeting text
-    greetingElement.innerHTML = timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1);  // Capitalize the first letter
+    greetingElement.innerHTML = timeOfDay.charAt(0).toLowerCase() + timeOfDay.slice(1);  // Capitalize the first letter
 
     // Optionally, set a name dynamically if you have it in your app's logic
     // For now, you can replace 'User' with any variable or static text
