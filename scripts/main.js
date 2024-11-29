@@ -206,7 +206,7 @@ function showConfirmationDialog(title, price, foodCode) {
         confirmButtonColor: "#FFA726",
         confirmButtonText: "Yes",
         cancelButtonText: "No",
-        reverseButtons: true,
+        
     }).then((result) => {
         if (result.isConfirmed) {
             // Show delivery confirmation dialog
@@ -238,7 +238,7 @@ function showConfirmationDialog(title, price, foodCode) {
                             confirmButtonText: "Yes",
                             cancelButtonText: "No",
                             confirmButtonColor: "#FFA726",
-                            reverseButtons: true,
+                        
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 window.location.href = "orders.html";

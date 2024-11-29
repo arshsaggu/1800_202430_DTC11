@@ -21,7 +21,7 @@ function manageRestaurantAndSearch() {
             confirmButtonColor: "#FFA726",
             confirmButtonText: "Yes",
             cancelButtonText: "No",
-            reverseButtons: true,
+            
        
         }).then((result) => {
             if (result.isConfirmed) {
@@ -54,7 +54,7 @@ function manageRestaurantAndSearch() {
                         confirmButtonText: "Yes",
                         cancelButtonText: "No",
                         confirmButtonColor: "#FFA726",
-                        reverseButtons: true,
+                       
                     }).then((result) => {
                         if (result.isConfirmed) {
                             window.location.href = "orders.html";

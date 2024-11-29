@@ -24,18 +24,22 @@ function CurrentOrder() {
 
                     // Create the current order card dynamically
                     const orderCard = `
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="./images/${orderImg}.jpg" class="card-img-top p-2" alt="Current Order">
+                        
+                            <div class="card py-2 mx-2" style="width: 24rem" >
+                                <img src="./images/${orderImg}.jpg" class="card-image card-img-top" alt="Current Order">
                                 <div class="card-body">
-                                    <h5 class="card-title text-xl font-bold">${title}</h5>
-                                    <p class="card-text">Status: ${status}</p>
-                                    <p class="card-text">Estimated delivery: ${orderTime}</p>
-                                    <p class="card-text">Total Price: $${totalPrice}</p>
-                                     <button class="confirm-btn mt-4 text-sm py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out ml-4" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">Confirm Delivery</button>
+                                    <h5 class="card-title text-2xl">${title}</h5>
+                                    <p class="card-text mt-0">Status: ${status}</p>
+                                    <p class="card-text mt-0">Estimated delivery: ${orderTime}</p>
+                                    <p class="">Total Price: $${totalPrice}</p>
+                                     <div class="flex justify-content-left mt-2 ">
+                                     <button class="confirm-btn text-md py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out"
+                                     style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                                     Confirm Delivery</button>
                                 </div>
                             </div>
-                        </div>
+                            </div>
+                        
                     `;
                     document.getElementById("currentOrderSection").innerHTML = orderCard;
 
@@ -78,10 +82,10 @@ function confirmOrder(orderId) {
         confirmButtonColor: "#FFA726",
         confirmButtonText: "Yes",
         cancelButtonText: "No",
-        reverseButtons: true,
+
     }).then((result) => {
         if (result.isConfirmed) {
-            
+
             swal.fire({
                 title: "Delivery Confirmed",
                 text: "Thank you, enjoy your order!",
@@ -89,7 +93,7 @@ function confirmOrder(orderId) {
                 confirmButtonColor: "#FFA726",
                 confirmButtonText: "OK",
             }).then(() => {
-                
+
                 const orderRef = db.collection("orders").doc(userId).collection("userOrders").doc(orderId);
 
                 orderRef.get().then(doc => {
@@ -100,14 +104,14 @@ function confirmOrder(orderId) {
                         const pastOrderRef = db.collection("orders").doc(userId).collection("pastOrders").doc(orderId);
 
                         pastOrderRef.set(orderData).then(() => {
-                            
+
                             orderRef.delete().then(() => {
-                               
+
                                 document.getElementById("currentOrderSection").innerHTML = `
                                     <h2 class="text-center">You have no current orders.</h2>
                                 `;
 
-                                 
+
                                 PastOrders();
                             }).catch(error => {
                                 console.error("Error removing current order: ", error);
@@ -138,7 +142,7 @@ function PastOrders() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
             alert("User not logged in.");
-            return; 
+            return;
         }
 
         const userId = user.uid;
@@ -157,18 +161,17 @@ function PastOrders() {
                     const totalPrice = orderData.price;
 
                     pastOrdersHTML += `
-                <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="./images/${orderImg}.jpg" class="card-img-top p-2" alt="Current Order">
+                 <div class="card py-2 mx-2" style="width: 24rem" >
+                                <img src="./images/${orderImg}.jpg" class="card-image card-img-top" alt="Current Order">
                                 <div class="card-body">
-                                    <h5 class="card-title text-xl font-bold">${title}</h5>
-                                    <p class="card-text">Status: Delivered</p>
-                                    <p class="card-text">Time Delivered: ${orderTime}</p>
-                                    <p class="card-text">Total Price: $${totalPrice}</p>
-
-                                </div>
+                                    <h5 class="card-title text-2xl">${title}</h5>
+                                    <p class="card-text mt-0">Status: Delivered </p>
+                                    <p class="card-text mt-0">Time Delivered: ${orderTime}</p>
+                                    <p class="">Total Price: $${totalPrice}</p>
+                                     
                             </div>
-                        </div>
+                            </div>
+                        
             `;
 
                 });
