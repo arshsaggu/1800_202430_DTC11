@@ -111,7 +111,7 @@ function manageRestaurantAndSearch() {
                     menuItemCard.classList.add("menu-item-card");
                     menuItemCard.innerHTML = `
                         <img src="../images/${menuItemCode}.jpg" alt="${menuItemName}" class="menu-item-image">
-                        <h2 class="mt-2 mb-2 text-3xl">${menuItemName}</h2>
+                        <h2 class="mt-2 mb-2 font-semibold text-3xl">${menuItemName}</h2>
                         <p>${menuItemDescription}</p>
                         <p>Price: $${menuItemPrice}</p>
                         <button class="order-btn mt-4 text-sm py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out ml-4"
