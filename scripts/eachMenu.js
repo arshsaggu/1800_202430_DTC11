@@ -113,7 +113,7 @@ function manageRestaurantAndSearch() {
                         <img src="../images/${menuItemCode}.jpg" alt="${menuItemName}" class="menu-item-image">
                         <h2 class="mt-2 mb-2 font-semibold text-3xl">${menuItemName}</h2>
                         <p>${menuItemDescription}</p>
-                        <p>Price: $${menuItemPrice}</p>
+                        <p class = "font-semibold">$${menuItemPrice}</p>
                         <button class="order-btn mt-4 text-sm py-2 px-4 rounded-xl bg-gradient-to-b from-orange-300 to-orange-400 text-white w-20 md:w-auto h-10 shadow-md hover:shadow-lg border-b-4 border-orange-500 transform hover:translate-y-1 transition duration-200 ease-in-out ml-4"
                         style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">ORDER NOW</button>
                     `;
