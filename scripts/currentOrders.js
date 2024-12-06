@@ -1,6 +1,6 @@
 // Function to display the current order
 function CurrentOrder() {
-    // Listen to the auth state change (This will be triggered when the page loads)
+    
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
             alert("User not logged in.");
@@ -8,7 +8,7 @@ function CurrentOrder() {
         }
 
         const userId = user.uid;
-        // Reference to the user's 'userOrders' sub-collection
+       
         const orderRef = db.collection("orders").doc(userId).collection("userOrders");
 
         orderRef.orderBy("orderTime", "desc").limit(1).get()
